@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1514464891794.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F764C8D7",
+    "lastKnownWriteTime" : 1514464916,
+    "last_content_update" : 1514464916188,
+    "path" : "~/Documents/GitHub/W4GCD/W4_GCD_Project/RunAnalysis.R",
+    "project_path" : "RunAnalysis.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
