@@ -123,22 +123,2642 @@ $(document).ready(function () {
 
 <div id="week-4-codebook-getting-and-cleaning-data-project" class="section level1">
 <h1>Week 4: Codebook: Getting and Cleaning Data Project</h1>
+<p>Loading the Datasets into R, both X_test.txt and Y_test.txt files have 561 vairables. Upon visual inspection of the features.txt file, the variable names appear to be short by 169 variables (561-392), however when loading file into R, or using a better text viewer than TextEdit for Mac, it is clear that all the variable names are present.</p>
+<p>Also, it appears that 84 variables or 3x27 variables are duplicated as below:</p>
 <table>
+<colgroup>
+<col width="12%"></col>
+<col width="87%"></col>
+</colgroup>
 <thead>
 <tr class="header">
-<th>Field Name</th>
-<th>Description</th>
-<th>Type</th>
+<th>Column</th>
+<th>Label</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>test</td>
-<td>test2</td>
-<td>test3</td>
+<td>317 - 344</td>
+<td>[fBodyAcc-bandsEnergy()-1,8]:[fBodyAcc-bandsEnergy()-25,48]</td>
+</tr>
+<tr class="even">
+<td>396 - 423</td>
+<td>[fBodyAccJerk-bandsEnergy()-1,8]:[fBodyAccJerk-bandsEnergy()-25,48]</td>
+</tr>
+<tr class="odd">
+<td>475 - 502</td>
+<td>[fBodyGyro-bandsEnergy()-1,8]:[fBodyGyro-bandsEnergy()-25,48]</td>
 </tr>
 </tbody>
 </table>
+<p>The explanations for this is found in the features_info.txt file where highlighted that essentially these variables as missing their designated X,Y,Z dimensions:</p>
+<p>“The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix ‘t’ to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz.</p>
+<p>Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag).</p>
+<p>Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the ‘f’ to indicate frequency domain signals).</p>
+<p>These signals were used to estimate variables of the feature vector for each pattern:<br />
+‘-XYZ’ is used to denote 3-axial signals in the X, Y and Z directions.&quot; <a href="http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones">Human Activity Recognition Using Smartphones Data Set</a></p>
+<div id="updated-codebook-for-combined-raw-data" class="section level2">
+<h2>Updated Codebook for Combined Raw Data</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>FieldName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>tBodyAcc-mean()-X</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>tBodyAcc-mean()-Y</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>tBodyAcc-mean()-Z</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>tBodyAcc-std()-X</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>tBodyAcc-std()-Y</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>tBodyAcc-std()-Z</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>tBodyAcc-mad()-X</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>tBodyAcc-mad()-Y</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>tBodyAcc-mad()-Z</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>tBodyAcc-max()-X</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>tBodyAcc-max()-Y</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>tBodyAcc-max()-Z</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>tBodyAcc-min()-X</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>tBodyAcc-min()-Y</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>tBodyAcc-min()-Z</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>tBodyAcc-sma()</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>tBodyAcc-energy()-X</td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>tBodyAcc-energy()-Y</td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>tBodyAcc-energy()-Z</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>tBodyAcc-iqr()-X</td>
+</tr>
+<tr class="odd">
+<td>21</td>
+<td>tBodyAcc-iqr()-Y</td>
+</tr>
+<tr class="even">
+<td>22</td>
+<td>tBodyAcc-iqr()-Z</td>
+</tr>
+<tr class="odd">
+<td>23</td>
+<td>tBodyAcc-entropy()-X</td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td>tBodyAcc-entropy()-Y</td>
+</tr>
+<tr class="odd">
+<td>25</td>
+<td>tBodyAcc-entropy()-Z</td>
+</tr>
+<tr class="even">
+<td>26</td>
+<td>tBodyAcc-arCoeff()-X,1</td>
+</tr>
+<tr class="odd">
+<td>27</td>
+<td>tBodyAcc-arCoeff()-X,2</td>
+</tr>
+<tr class="even">
+<td>28</td>
+<td>tBodyAcc-arCoeff()-X,3</td>
+</tr>
+<tr class="odd">
+<td>29</td>
+<td>tBodyAcc-arCoeff()-X,4</td>
+</tr>
+<tr class="even">
+<td>30</td>
+<td>tBodyAcc-arCoeff()-Y,1</td>
+</tr>
+<tr class="odd">
+<td>31</td>
+<td>tBodyAcc-arCoeff()-Y,2</td>
+</tr>
+<tr class="even">
+<td>32</td>
+<td>tBodyAcc-arCoeff()-Y,3</td>
+</tr>
+<tr class="odd">
+<td>33</td>
+<td>tBodyAcc-arCoeff()-Y,4</td>
+</tr>
+<tr class="even">
+<td>34</td>
+<td>tBodyAcc-arCoeff()-Z,1</td>
+</tr>
+<tr class="odd">
+<td>35</td>
+<td>tBodyAcc-arCoeff()-Z,2</td>
+</tr>
+<tr class="even">
+<td>36</td>
+<td>tBodyAcc-arCoeff()-Z,3</td>
+</tr>
+<tr class="odd">
+<td>37</td>
+<td>tBodyAcc-arCoeff()-Z,4</td>
+</tr>
+<tr class="even">
+<td>38</td>
+<td>tBodyAcc-correlation()-X,Y</td>
+</tr>
+<tr class="odd">
+<td>39</td>
+<td>tBodyAcc-correlation()-X,Z</td>
+</tr>
+<tr class="even">
+<td>40</td>
+<td>tBodyAcc-correlation()-Y,Z</td>
+</tr>
+<tr class="odd">
+<td>41</td>
+<td>tGravityAcc-mean()-X</td>
+</tr>
+<tr class="even">
+<td>42</td>
+<td>tGravityAcc-mean()-Y</td>
+</tr>
+<tr class="odd">
+<td>43</td>
+<td>tGravityAcc-mean()-Z</td>
+</tr>
+<tr class="even">
+<td>44</td>
+<td>tGravityAcc-std()-X</td>
+</tr>
+<tr class="odd">
+<td>45</td>
+<td>tGravityAcc-std()-Y</td>
+</tr>
+<tr class="even">
+<td>46</td>
+<td>tGravityAcc-std()-Z</td>
+</tr>
+<tr class="odd">
+<td>47</td>
+<td>tGravityAcc-mad()-X</td>
+</tr>
+<tr class="even">
+<td>48</td>
+<td>tGravityAcc-mad()-Y</td>
+</tr>
+<tr class="odd">
+<td>49</td>
+<td>tGravityAcc-mad()-Z</td>
+</tr>
+<tr class="even">
+<td>50</td>
+<td>tGravityAcc-max()-X</td>
+</tr>
+<tr class="odd">
+<td>51</td>
+<td>tGravityAcc-max()-Y</td>
+</tr>
+<tr class="even">
+<td>52</td>
+<td>tGravityAcc-max()-Z</td>
+</tr>
+<tr class="odd">
+<td>53</td>
+<td>tGravityAcc-min()-X</td>
+</tr>
+<tr class="even">
+<td>54</td>
+<td>tGravityAcc-min()-Y</td>
+</tr>
+<tr class="odd">
+<td>55</td>
+<td>tGravityAcc-min()-Z</td>
+</tr>
+<tr class="even">
+<td>56</td>
+<td>tGravityAcc-sma()</td>
+</tr>
+<tr class="odd">
+<td>57</td>
+<td>tGravityAcc-energy()-X</td>
+</tr>
+<tr class="even">
+<td>58</td>
+<td>tGravityAcc-energy()-Y</td>
+</tr>
+<tr class="odd">
+<td>59</td>
+<td>tGravityAcc-energy()-Z</td>
+</tr>
+<tr class="even">
+<td>60</td>
+<td>tGravityAcc-iqr()-X</td>
+</tr>
+<tr class="odd">
+<td>61</td>
+<td>tGravityAcc-iqr()-Y</td>
+</tr>
+<tr class="even">
+<td>62</td>
+<td>tGravityAcc-iqr()-Z</td>
+</tr>
+<tr class="odd">
+<td>63</td>
+<td>tGravityAcc-entropy()-X</td>
+</tr>
+<tr class="even">
+<td>64</td>
+<td>tGravityAcc-entropy()-Y</td>
+</tr>
+<tr class="odd">
+<td>65</td>
+<td>tGravityAcc-entropy()-Z</td>
+</tr>
+<tr class="even">
+<td>66</td>
+<td>tGravityAcc-arCoeff()-X,1</td>
+</tr>
+<tr class="odd">
+<td>67</td>
+<td>tGravityAcc-arCoeff()-X,2</td>
+</tr>
+<tr class="even">
+<td>68</td>
+<td>tGravityAcc-arCoeff()-X,3</td>
+</tr>
+<tr class="odd">
+<td>69</td>
+<td>tGravityAcc-arCoeff()-X,4</td>
+</tr>
+<tr class="even">
+<td>70</td>
+<td>tGravityAcc-arCoeff()-Y,1</td>
+</tr>
+<tr class="odd">
+<td>71</td>
+<td>tGravityAcc-arCoeff()-Y,2</td>
+</tr>
+<tr class="even">
+<td>72</td>
+<td>tGravityAcc-arCoeff()-Y,3</td>
+</tr>
+<tr class="odd">
+<td>73</td>
+<td>tGravityAcc-arCoeff()-Y,4</td>
+</tr>
+<tr class="even">
+<td>74</td>
+<td>tGravityAcc-arCoeff()-Z,1</td>
+</tr>
+<tr class="odd">
+<td>75</td>
+<td>tGravityAcc-arCoeff()-Z,2</td>
+</tr>
+<tr class="even">
+<td>76</td>
+<td>tGravityAcc-arCoeff()-Z,3</td>
+</tr>
+<tr class="odd">
+<td>77</td>
+<td>tGravityAcc-arCoeff()-Z,4</td>
+</tr>
+<tr class="even">
+<td>78</td>
+<td>tGravityAcc-correlation()-X,Y</td>
+</tr>
+<tr class="odd">
+<td>79</td>
+<td>tGravityAcc-correlation()-X,Z</td>
+</tr>
+<tr class="even">
+<td>80</td>
+<td>tGravityAcc-correlation()-Y,Z</td>
+</tr>
+<tr class="odd">
+<td>81</td>
+<td>tBodyAccJerk-mean()-X</td>
+</tr>
+<tr class="even">
+<td>82</td>
+<td>tBodyAccJerk-mean()-Y</td>
+</tr>
+<tr class="odd">
+<td>83</td>
+<td>tBodyAccJerk-mean()-Z</td>
+</tr>
+<tr class="even">
+<td>84</td>
+<td>tBodyAccJerk-std()-X</td>
+</tr>
+<tr class="odd">
+<td>85</td>
+<td>tBodyAccJerk-std()-Y</td>
+</tr>
+<tr class="even">
+<td>86</td>
+<td>tBodyAccJerk-std()-Z</td>
+</tr>
+<tr class="odd">
+<td>87</td>
+<td>tBodyAccJerk-mad()-X</td>
+</tr>
+<tr class="even">
+<td>88</td>
+<td>tBodyAccJerk-mad()-Y</td>
+</tr>
+<tr class="odd">
+<td>89</td>
+<td>tBodyAccJerk-mad()-Z</td>
+</tr>
+<tr class="even">
+<td>90</td>
+<td>tBodyAccJerk-max()-X</td>
+</tr>
+<tr class="odd">
+<td>91</td>
+<td>tBodyAccJerk-max()-Y</td>
+</tr>
+<tr class="even">
+<td>92</td>
+<td>tBodyAccJerk-max()-Z</td>
+</tr>
+<tr class="odd">
+<td>93</td>
+<td>tBodyAccJerk-min()-X</td>
+</tr>
+<tr class="even">
+<td>94</td>
+<td>tBodyAccJerk-min()-Y</td>
+</tr>
+<tr class="odd">
+<td>95</td>
+<td>tBodyAccJerk-min()-Z</td>
+</tr>
+<tr class="even">
+<td>96</td>
+<td>tBodyAccJerk-sma()</td>
+</tr>
+<tr class="odd">
+<td>97</td>
+<td>tBodyAccJerk-energy()-X</td>
+</tr>
+<tr class="even">
+<td>98</td>
+<td>tBodyAccJerk-energy()-Y</td>
+</tr>
+<tr class="odd">
+<td>99</td>
+<td>tBodyAccJerk-energy()-Z</td>
+</tr>
+<tr class="even">
+<td>100</td>
+<td>tBodyAccJerk-iqr()-X</td>
+</tr>
+<tr class="odd">
+<td>101</td>
+<td>tBodyAccJerk-iqr()-Y</td>
+</tr>
+<tr class="even">
+<td>102</td>
+<td>tBodyAccJerk-iqr()-Z</td>
+</tr>
+<tr class="odd">
+<td>103</td>
+<td>tBodyAccJerk-entropy()-X</td>
+</tr>
+<tr class="even">
+<td>104</td>
+<td>tBodyAccJerk-entropy()-Y</td>
+</tr>
+<tr class="odd">
+<td>105</td>
+<td>tBodyAccJerk-entropy()-Z</td>
+</tr>
+<tr class="even">
+<td>106</td>
+<td>tBodyAccJerk-arCoeff()-X,1</td>
+</tr>
+<tr class="odd">
+<td>107</td>
+<td>tBodyAccJerk-arCoeff()-X,2</td>
+</tr>
+<tr class="even">
+<td>108</td>
+<td>tBodyAccJerk-arCoeff()-X,3</td>
+</tr>
+<tr class="odd">
+<td>109</td>
+<td>tBodyAccJerk-arCoeff()-X,4</td>
+</tr>
+<tr class="even">
+<td>110</td>
+<td>tBodyAccJerk-arCoeff()-Y,1</td>
+</tr>
+<tr class="odd">
+<td>111</td>
+<td>tBodyAccJerk-arCoeff()-Y,2</td>
+</tr>
+<tr class="even">
+<td>112</td>
+<td>tBodyAccJerk-arCoeff()-Y,3</td>
+</tr>
+<tr class="odd">
+<td>113</td>
+<td>tBodyAccJerk-arCoeff()-Y,4</td>
+</tr>
+<tr class="even">
+<td>114</td>
+<td>tBodyAccJerk-arCoeff()-Z,1</td>
+</tr>
+<tr class="odd">
+<td>115</td>
+<td>tBodyAccJerk-arCoeff()-Z,2</td>
+</tr>
+<tr class="even">
+<td>116</td>
+<td>tBodyAccJerk-arCoeff()-Z,3</td>
+</tr>
+<tr class="odd">
+<td>117</td>
+<td>tBodyAccJerk-arCoeff()-Z,4</td>
+</tr>
+<tr class="even">
+<td>118</td>
+<td>tBodyAccJerk-correlation()-X,Y</td>
+</tr>
+<tr class="odd">
+<td>119</td>
+<td>tBodyAccJerk-correlation()-X,Z</td>
+</tr>
+<tr class="even">
+<td>120</td>
+<td>tBodyAccJerk-correlation()-Y,Z</td>
+</tr>
+<tr class="odd">
+<td>121</td>
+<td>tBodyGyro-mean()-X</td>
+</tr>
+<tr class="even">
+<td>122</td>
+<td>tBodyGyro-mean()-Y</td>
+</tr>
+<tr class="odd">
+<td>123</td>
+<td>tBodyGyro-mean()-Z</td>
+</tr>
+<tr class="even">
+<td>124</td>
+<td>tBodyGyro-std()-X</td>
+</tr>
+<tr class="odd">
+<td>125</td>
+<td>tBodyGyro-std()-Y</td>
+</tr>
+<tr class="even">
+<td>126</td>
+<td>tBodyGyro-std()-Z</td>
+</tr>
+<tr class="odd">
+<td>127</td>
+<td>tBodyGyro-mad()-X</td>
+</tr>
+<tr class="even">
+<td>128</td>
+<td>tBodyGyro-mad()-Y</td>
+</tr>
+<tr class="odd">
+<td>129</td>
+<td>tBodyGyro-mad()-Z</td>
+</tr>
+<tr class="even">
+<td>130</td>
+<td>tBodyGyro-max()-X</td>
+</tr>
+<tr class="odd">
+<td>131</td>
+<td>tBodyGyro-max()-Y</td>
+</tr>
+<tr class="even">
+<td>132</td>
+<td>tBodyGyro-max()-Z</td>
+</tr>
+<tr class="odd">
+<td>133</td>
+<td>tBodyGyro-min()-X</td>
+</tr>
+<tr class="even">
+<td>134</td>
+<td>tBodyGyro-min()-Y</td>
+</tr>
+<tr class="odd">
+<td>135</td>
+<td>tBodyGyro-min()-Z</td>
+</tr>
+<tr class="even">
+<td>136</td>
+<td>tBodyGyro-sma()</td>
+</tr>
+<tr class="odd">
+<td>137</td>
+<td>tBodyGyro-energy()-X</td>
+</tr>
+<tr class="even">
+<td>138</td>
+<td>tBodyGyro-energy()-Y</td>
+</tr>
+<tr class="odd">
+<td>139</td>
+<td>tBodyGyro-energy()-Z</td>
+</tr>
+<tr class="even">
+<td>140</td>
+<td>tBodyGyro-iqr()-X</td>
+</tr>
+<tr class="odd">
+<td>141</td>
+<td>tBodyGyro-iqr()-Y</td>
+</tr>
+<tr class="even">
+<td>142</td>
+<td>tBodyGyro-iqr()-Z</td>
+</tr>
+<tr class="odd">
+<td>143</td>
+<td>tBodyGyro-entropy()-X</td>
+</tr>
+<tr class="even">
+<td>144</td>
+<td>tBodyGyro-entropy()-Y</td>
+</tr>
+<tr class="odd">
+<td>145</td>
+<td>tBodyGyro-entropy()-Z</td>
+</tr>
+<tr class="even">
+<td>146</td>
+<td>tBodyGyro-arCoeff()-X,1</td>
+</tr>
+<tr class="odd">
+<td>147</td>
+<td>tBodyGyro-arCoeff()-X,2</td>
+</tr>
+<tr class="even">
+<td>148</td>
+<td>tBodyGyro-arCoeff()-X,3</td>
+</tr>
+<tr class="odd">
+<td>149</td>
+<td>tBodyGyro-arCoeff()-X,4</td>
+</tr>
+<tr class="even">
+<td>150</td>
+<td>tBodyGyro-arCoeff()-Y,1</td>
+</tr>
+<tr class="odd">
+<td>151</td>
+<td>tBodyGyro-arCoeff()-Y,2</td>
+</tr>
+<tr class="even">
+<td>152</td>
+<td>tBodyGyro-arCoeff()-Y,3</td>
+</tr>
+<tr class="odd">
+<td>153</td>
+<td>tBodyGyro-arCoeff()-Y,4</td>
+</tr>
+<tr class="even">
+<td>154</td>
+<td>tBodyGyro-arCoeff()-Z,1</td>
+</tr>
+<tr class="odd">
+<td>155</td>
+<td>tBodyGyro-arCoeff()-Z,2</td>
+</tr>
+<tr class="even">
+<td>156</td>
+<td>tBodyGyro-arCoeff()-Z,3</td>
+</tr>
+<tr class="odd">
+<td>157</td>
+<td>tBodyGyro-arCoeff()-Z,4</td>
+</tr>
+<tr class="even">
+<td>158</td>
+<td>tBodyGyro-correlation()-X,Y</td>
+</tr>
+<tr class="odd">
+<td>159</td>
+<td>tBodyGyro-correlation()-X,Z</td>
+</tr>
+<tr class="even">
+<td>160</td>
+<td>tBodyGyro-correlation()-Y,Z</td>
+</tr>
+<tr class="odd">
+<td>161</td>
+<td>tBodyGyroJerk-mean()-X</td>
+</tr>
+<tr class="even">
+<td>162</td>
+<td>tBodyGyroJerk-mean()-Y</td>
+</tr>
+<tr class="odd">
+<td>163</td>
+<td>tBodyGyroJerk-mean()-Z</td>
+</tr>
+<tr class="even">
+<td>164</td>
+<td>tBodyGyroJerk-std()-X</td>
+</tr>
+<tr class="odd">
+<td>165</td>
+<td>tBodyGyroJerk-std()-Y</td>
+</tr>
+<tr class="even">
+<td>166</td>
+<td>tBodyGyroJerk-std()-Z</td>
+</tr>
+<tr class="odd">
+<td>167</td>
+<td>tBodyGyroJerk-mad()-X</td>
+</tr>
+<tr class="even">
+<td>168</td>
+<td>tBodyGyroJerk-mad()-Y</td>
+</tr>
+<tr class="odd">
+<td>169</td>
+<td>tBodyGyroJerk-mad()-Z</td>
+</tr>
+<tr class="even">
+<td>170</td>
+<td>tBodyGyroJerk-max()-X</td>
+</tr>
+<tr class="odd">
+<td>171</td>
+<td>tBodyGyroJerk-max()-Y</td>
+</tr>
+<tr class="even">
+<td>172</td>
+<td>tBodyGyroJerk-max()-Z</td>
+</tr>
+<tr class="odd">
+<td>173</td>
+<td>tBodyGyroJerk-min()-X</td>
+</tr>
+<tr class="even">
+<td>174</td>
+<td>tBodyGyroJerk-min()-Y</td>
+</tr>
+<tr class="odd">
+<td>175</td>
+<td>tBodyGyroJerk-min()-Z</td>
+</tr>
+<tr class="even">
+<td>176</td>
+<td>tBodyGyroJerk-sma()</td>
+</tr>
+<tr class="odd">
+<td>177</td>
+<td>tBodyGyroJerk-energy()-X</td>
+</tr>
+<tr class="even">
+<td>178</td>
+<td>tBodyGyroJerk-energy()-Y</td>
+</tr>
+<tr class="odd">
+<td>179</td>
+<td>tBodyGyroJerk-energy()-Z</td>
+</tr>
+<tr class="even">
+<td>180</td>
+<td>tBodyGyroJerk-iqr()-X</td>
+</tr>
+<tr class="odd">
+<td>181</td>
+<td>tBodyGyroJerk-iqr()-Y</td>
+</tr>
+<tr class="even">
+<td>182</td>
+<td>tBodyGyroJerk-iqr()-Z</td>
+</tr>
+<tr class="odd">
+<td>183</td>
+<td>tBodyGyroJerk-entropy()-X</td>
+</tr>
+<tr class="even">
+<td>184</td>
+<td>tBodyGyroJerk-entropy()-Y</td>
+</tr>
+<tr class="odd">
+<td>185</td>
+<td>tBodyGyroJerk-entropy()-Z</td>
+</tr>
+<tr class="even">
+<td>186</td>
+<td>tBodyGyroJerk-arCoeff()-X,1</td>
+</tr>
+<tr class="odd">
+<td>187</td>
+<td>tBodyGyroJerk-arCoeff()-X,2</td>
+</tr>
+<tr class="even">
+<td>188</td>
+<td>tBodyGyroJerk-arCoeff()-X,3</td>
+</tr>
+<tr class="odd">
+<td>189</td>
+<td>tBodyGyroJerk-arCoeff()-X,4</td>
+</tr>
+<tr class="even">
+<td>190</td>
+<td>tBodyGyroJerk-arCoeff()-Y,1</td>
+</tr>
+<tr class="odd">
+<td>191</td>
+<td>tBodyGyroJerk-arCoeff()-Y,2</td>
+</tr>
+<tr class="even">
+<td>192</td>
+<td>tBodyGyroJerk-arCoeff()-Y,3</td>
+</tr>
+<tr class="odd">
+<td>193</td>
+<td>tBodyGyroJerk-arCoeff()-Y,4</td>
+</tr>
+<tr class="even">
+<td>194</td>
+<td>tBodyGyroJerk-arCoeff()-Z,1</td>
+</tr>
+<tr class="odd">
+<td>195</td>
+<td>tBodyGyroJerk-arCoeff()-Z,2</td>
+</tr>
+<tr class="even">
+<td>196</td>
+<td>tBodyGyroJerk-arCoeff()-Z,3</td>
+</tr>
+<tr class="odd">
+<td>197</td>
+<td>tBodyGyroJerk-arCoeff()-Z,4</td>
+</tr>
+<tr class="even">
+<td>198</td>
+<td>tBodyGyroJerk-correlation()-X,Y</td>
+</tr>
+<tr class="odd">
+<td>199</td>
+<td>tBodyGyroJerk-correlation()-X,Z</td>
+</tr>
+<tr class="even">
+<td>200</td>
+<td>tBodyGyroJerk-correlation()-Y,Z</td>
+</tr>
+<tr class="odd">
+<td>201</td>
+<td>tBodyAccMag-mean()</td>
+</tr>
+<tr class="even">
+<td>202</td>
+<td>tBodyAccMag-std()</td>
+</tr>
+<tr class="odd">
+<td>203</td>
+<td>tBodyAccMag-mad()</td>
+</tr>
+<tr class="even">
+<td>204</td>
+<td>tBodyAccMag-max()</td>
+</tr>
+<tr class="odd">
+<td>205</td>
+<td>tBodyAccMag-min()</td>
+</tr>
+<tr class="even">
+<td>206</td>
+<td>tBodyAccMag-sma()</td>
+</tr>
+<tr class="odd">
+<td>207</td>
+<td>tBodyAccMag-energy()</td>
+</tr>
+<tr class="even">
+<td>208</td>
+<td>tBodyAccMag-iqr()</td>
+</tr>
+<tr class="odd">
+<td>209</td>
+<td>tBodyAccMag-entropy()</td>
+</tr>
+<tr class="even">
+<td>210</td>
+<td>tBodyAccMag-arCoeff()1</td>
+</tr>
+<tr class="odd">
+<td>211</td>
+<td>tBodyAccMag-arCoeff()2</td>
+</tr>
+<tr class="even">
+<td>212</td>
+<td>tBodyAccMag-arCoeff()3</td>
+</tr>
+<tr class="odd">
+<td>213</td>
+<td>tBodyAccMag-arCoeff()4</td>
+</tr>
+<tr class="even">
+<td>214</td>
+<td>tGravityAccMag-mean()</td>
+</tr>
+<tr class="odd">
+<td>215</td>
+<td>tGravityAccMag-std()</td>
+</tr>
+<tr class="even">
+<td>216</td>
+<td>tGravityAccMag-mad()</td>
+</tr>
+<tr class="odd">
+<td>217</td>
+<td>tGravityAccMag-max()</td>
+</tr>
+<tr class="even">
+<td>218</td>
+<td>tGravityAccMag-min()</td>
+</tr>
+<tr class="odd">
+<td>219</td>
+<td>tGravityAccMag-sma()</td>
+</tr>
+<tr class="even">
+<td>220</td>
+<td>tGravityAccMag-energy()</td>
+</tr>
+<tr class="odd">
+<td>221</td>
+<td>tGravityAccMag-iqr()</td>
+</tr>
+<tr class="even">
+<td>222</td>
+<td>tGravityAccMag-entropy()</td>
+</tr>
+<tr class="odd">
+<td>223</td>
+<td>tGravityAccMag-arCoeff()1</td>
+</tr>
+<tr class="even">
+<td>224</td>
+<td>tGravityAccMag-arCoeff()2</td>
+</tr>
+<tr class="odd">
+<td>225</td>
+<td>tGravityAccMag-arCoeff()3</td>
+</tr>
+<tr class="even">
+<td>226</td>
+<td>tGravityAccMag-arCoeff()4</td>
+</tr>
+<tr class="odd">
+<td>227</td>
+<td>tBodyAccJerkMag-mean()</td>
+</tr>
+<tr class="even">
+<td>228</td>
+<td>tBodyAccJerkMag-std()</td>
+</tr>
+<tr class="odd">
+<td>229</td>
+<td>tBodyAccJerkMag-mad()</td>
+</tr>
+<tr class="even">
+<td>230</td>
+<td>tBodyAccJerkMag-max()</td>
+</tr>
+<tr class="odd">
+<td>231</td>
+<td>tBodyAccJerkMag-min()</td>
+</tr>
+<tr class="even">
+<td>232</td>
+<td>tBodyAccJerkMag-sma()</td>
+</tr>
+<tr class="odd">
+<td>233</td>
+<td>tBodyAccJerkMag-energy()</td>
+</tr>
+<tr class="even">
+<td>234</td>
+<td>tBodyAccJerkMag-iqr()</td>
+</tr>
+<tr class="odd">
+<td>235</td>
+<td>tBodyAccJerkMag-entropy()</td>
+</tr>
+<tr class="even">
+<td>236</td>
+<td>tBodyAccJerkMag-arCoeff()1</td>
+</tr>
+<tr class="odd">
+<td>237</td>
+<td>tBodyAccJerkMag-arCoeff()2</td>
+</tr>
+<tr class="even">
+<td>238</td>
+<td>tBodyAccJerkMag-arCoeff()3</td>
+</tr>
+<tr class="odd">
+<td>239</td>
+<td>tBodyAccJerkMag-arCoeff()4</td>
+</tr>
+<tr class="even">
+<td>240</td>
+<td>tBodyGyroMag-mean()</td>
+</tr>
+<tr class="odd">
+<td>241</td>
+<td>tBodyGyroMag-std()</td>
+</tr>
+<tr class="even">
+<td>242</td>
+<td>tBodyGyroMag-mad()</td>
+</tr>
+<tr class="odd">
+<td>243</td>
+<td>tBodyGyroMag-max()</td>
+</tr>
+<tr class="even">
+<td>244</td>
+<td>tBodyGyroMag-min()</td>
+</tr>
+<tr class="odd">
+<td>245</td>
+<td>tBodyGyroMag-sma()</td>
+</tr>
+<tr class="even">
+<td>246</td>
+<td>tBodyGyroMag-energy()</td>
+</tr>
+<tr class="odd">
+<td>247</td>
+<td>tBodyGyroMag-iqr()</td>
+</tr>
+<tr class="even">
+<td>248</td>
+<td>tBodyGyroMag-entropy()</td>
+</tr>
+<tr class="odd">
+<td>249</td>
+<td>tBodyGyroMag-arCoeff()1</td>
+</tr>
+<tr class="even">
+<td>250</td>
+<td>tBodyGyroMag-arCoeff()2</td>
+</tr>
+<tr class="odd">
+<td>251</td>
+<td>tBodyGyroMag-arCoeff()3</td>
+</tr>
+<tr class="even">
+<td>252</td>
+<td>tBodyGyroMag-arCoeff()4</td>
+</tr>
+<tr class="odd">
+<td>253</td>
+<td>tBodyGyroJerkMag-mean()</td>
+</tr>
+<tr class="even">
+<td>254</td>
+<td>tBodyGyroJerkMag-std()</td>
+</tr>
+<tr class="odd">
+<td>255</td>
+<td>tBodyGyroJerkMag-mad()</td>
+</tr>
+<tr class="even">
+<td>256</td>
+<td>tBodyGyroJerkMag-max()</td>
+</tr>
+<tr class="odd">
+<td>257</td>
+<td>tBodyGyroJerkMag-min()</td>
+</tr>
+<tr class="even">
+<td>258</td>
+<td>tBodyGyroJerkMag-sma()</td>
+</tr>
+<tr class="odd">
+<td>259</td>
+<td>tBodyGyroJerkMag-energy()</td>
+</tr>
+<tr class="even">
+<td>260</td>
+<td>tBodyGyroJerkMag-iqr()</td>
+</tr>
+<tr class="odd">
+<td>261</td>
+<td>tBodyGyroJerkMag-entropy()</td>
+</tr>
+<tr class="even">
+<td>262</td>
+<td>tBodyGyroJerkMag-arCoeff()1</td>
+</tr>
+<tr class="odd">
+<td>263</td>
+<td>tBodyGyroJerkMag-arCoeff()2</td>
+</tr>
+<tr class="even">
+<td>264</td>
+<td>tBodyGyroJerkMag-arCoeff()3</td>
+</tr>
+<tr class="odd">
+<td>265</td>
+<td>tBodyGyroJerkMag-arCoeff()4</td>
+</tr>
+<tr class="even">
+<td>266</td>
+<td>fBodyAcc-mean()-X</td>
+</tr>
+<tr class="odd">
+<td>267</td>
+<td>fBodyAcc-mean()-Y</td>
+</tr>
+<tr class="even">
+<td>268</td>
+<td>fBodyAcc-mean()-Z</td>
+</tr>
+<tr class="odd">
+<td>269</td>
+<td>fBodyAcc-std()-X</td>
+</tr>
+<tr class="even">
+<td>270</td>
+<td>fBodyAcc-std()-Y</td>
+</tr>
+<tr class="odd">
+<td>271</td>
+<td>fBodyAcc-std()-Z</td>
+</tr>
+<tr class="even">
+<td>272</td>
+<td>fBodyAcc-mad()-X</td>
+</tr>
+<tr class="odd">
+<td>273</td>
+<td>fBodyAcc-mad()-Y</td>
+</tr>
+<tr class="even">
+<td>274</td>
+<td>fBodyAcc-mad()-Z</td>
+</tr>
+<tr class="odd">
+<td>275</td>
+<td>fBodyAcc-max()-X</td>
+</tr>
+<tr class="even">
+<td>276</td>
+<td>fBodyAcc-max()-Y</td>
+</tr>
+<tr class="odd">
+<td>277</td>
+<td>fBodyAcc-max()-Z</td>
+</tr>
+<tr class="even">
+<td>278</td>
+<td>fBodyAcc-min()-X</td>
+</tr>
+<tr class="odd">
+<td>279</td>
+<td>fBodyAcc-min()-Y</td>
+</tr>
+<tr class="even">
+<td>280</td>
+<td>fBodyAcc-min()-Z</td>
+</tr>
+<tr class="odd">
+<td>281</td>
+<td>fBodyAcc-sma()</td>
+</tr>
+<tr class="even">
+<td>282</td>
+<td>fBodyAcc-energy()-X</td>
+</tr>
+<tr class="odd">
+<td>283</td>
+<td>fBodyAcc-energy()-Y</td>
+</tr>
+<tr class="even">
+<td>284</td>
+<td>fBodyAcc-energy()-Z</td>
+</tr>
+<tr class="odd">
+<td>285</td>
+<td>fBodyAcc-iqr()-X</td>
+</tr>
+<tr class="even">
+<td>286</td>
+<td>fBodyAcc-iqr()-Y</td>
+</tr>
+<tr class="odd">
+<td>287</td>
+<td>fBodyAcc-iqr()-Z</td>
+</tr>
+<tr class="even">
+<td>288</td>
+<td>fBodyAcc-entropy()-X</td>
+</tr>
+<tr class="odd">
+<td>289</td>
+<td>fBodyAcc-entropy()-Y</td>
+</tr>
+<tr class="even">
+<td>290</td>
+<td>fBodyAcc-entropy()-Z</td>
+</tr>
+<tr class="odd">
+<td>291</td>
+<td>fBodyAcc-maxInds-X</td>
+</tr>
+<tr class="even">
+<td>292</td>
+<td>fBodyAcc-maxInds-Y</td>
+</tr>
+<tr class="odd">
+<td>293</td>
+<td>fBodyAcc-maxInds-Z</td>
+</tr>
+<tr class="even">
+<td>294</td>
+<td>fBodyAcc-meanFreq()-X</td>
+</tr>
+<tr class="odd">
+<td>295</td>
+<td>fBodyAcc-meanFreq()-Y</td>
+</tr>
+<tr class="even">
+<td>296</td>
+<td>fBodyAcc-meanFreq()-Z</td>
+</tr>
+<tr class="odd">
+<td>297</td>
+<td>fBodyAcc-skewness()-X</td>
+</tr>
+<tr class="even">
+<td>298</td>
+<td>fBodyAcc-kurtosis()-X</td>
+</tr>
+<tr class="odd">
+<td>299</td>
+<td>fBodyAcc-skewness()-Y</td>
+</tr>
+<tr class="even">
+<td>300</td>
+<td>fBodyAcc-kurtosis()-Y</td>
+</tr>
+<tr class="odd">
+<td>301</td>
+<td>fBodyAcc-skewness()-Z</td>
+</tr>
+<tr class="even">
+<td>302</td>
+<td>fBodyAcc-kurtosis()-Z</td>
+</tr>
+<tr class="odd">
+<td>303</td>
+<td>fBodyAcc-bandsEnergy()-1,8</td>
+</tr>
+<tr class="even">
+<td>304</td>
+<td>fBodyAcc-bandsEnergy()-9,16</td>
+</tr>
+<tr class="odd">
+<td>305</td>
+<td>fBodyAcc-bandsEnergy()-17,24</td>
+</tr>
+<tr class="even">
+<td>306</td>
+<td>fBodyAcc-bandsEnergy()-25,32</td>
+</tr>
+<tr class="odd">
+<td>307</td>
+<td>fBodyAcc-bandsEnergy()-33,40</td>
+</tr>
+<tr class="even">
+<td>308</td>
+<td>fBodyAcc-bandsEnergy()-41,48</td>
+</tr>
+<tr class="odd">
+<td>309</td>
+<td>fBodyAcc-bandsEnergy()-49,56</td>
+</tr>
+<tr class="even">
+<td>310</td>
+<td>fBodyAcc-bandsEnergy()-57,64</td>
+</tr>
+<tr class="odd">
+<td>311</td>
+<td>fBodyAcc-bandsEnergy()-1,16</td>
+</tr>
+<tr class="even">
+<td>312</td>
+<td>fBodyAcc-bandsEnergy()-17,32</td>
+</tr>
+<tr class="odd">
+<td>313</td>
+<td>fBodyAcc-bandsEnergy()-33,48</td>
+</tr>
+<tr class="even">
+<td>314</td>
+<td>fBodyAcc-bandsEnergy()-49,64</td>
+</tr>
+<tr class="odd">
+<td>315</td>
+<td>fBodyAcc-bandsEnergy()-1,24</td>
+</tr>
+<tr class="even">
+<td>316</td>
+<td>fBodyAcc-bandsEnergy()-25,48</td>
+</tr>
+<tr class="odd">
+<td>317</td>
+<td>fBodyAcc-bandsEnergy()-1,8</td>
+</tr>
+<tr class="even">
+<td>318</td>
+<td>fBodyAcc-bandsEnergy()-9,16</td>
+</tr>
+<tr class="odd">
+<td>319</td>
+<td>fBodyAcc-bandsEnergy()-17,24</td>
+</tr>
+<tr class="even">
+<td>320</td>
+<td>fBodyAcc-bandsEnergy()-25,32</td>
+</tr>
+<tr class="odd">
+<td>321</td>
+<td>fBodyAcc-bandsEnergy()-33,40</td>
+</tr>
+<tr class="even">
+<td>322</td>
+<td>fBodyAcc-bandsEnergy()-41,48</td>
+</tr>
+<tr class="odd">
+<td>323</td>
+<td>fBodyAcc-bandsEnergy()-49,56</td>
+</tr>
+<tr class="even">
+<td>324</td>
+<td>fBodyAcc-bandsEnergy()-57,64</td>
+</tr>
+<tr class="odd">
+<td>325</td>
+<td>fBodyAcc-bandsEnergy()-1,16</td>
+</tr>
+<tr class="even">
+<td>326</td>
+<td>fBodyAcc-bandsEnergy()-17,32</td>
+</tr>
+<tr class="odd">
+<td>327</td>
+<td>fBodyAcc-bandsEnergy()-33,48</td>
+</tr>
+<tr class="even">
+<td>328</td>
+<td>fBodyAcc-bandsEnergy()-49,64</td>
+</tr>
+<tr class="odd">
+<td>329</td>
+<td>fBodyAcc-bandsEnergy()-1,24</td>
+</tr>
+<tr class="even">
+<td>330</td>
+<td>fBodyAcc-bandsEnergy()-25,48</td>
+</tr>
+<tr class="odd">
+<td>331</td>
+<td>fBodyAcc-bandsEnergy()-1,8</td>
+</tr>
+<tr class="even">
+<td>332</td>
+<td>fBodyAcc-bandsEnergy()-9,16</td>
+</tr>
+<tr class="odd">
+<td>333</td>
+<td>fBodyAcc-bandsEnergy()-17,24</td>
+</tr>
+<tr class="even">
+<td>334</td>
+<td>fBodyAcc-bandsEnergy()-25,32</td>
+</tr>
+<tr class="odd">
+<td>335</td>
+<td>fBodyAcc-bandsEnergy()-33,40</td>
+</tr>
+<tr class="even">
+<td>336</td>
+<td>fBodyAcc-bandsEnergy()-41,48</td>
+</tr>
+<tr class="odd">
+<td>337</td>
+<td>fBodyAcc-bandsEnergy()-49,56</td>
+</tr>
+<tr class="even">
+<td>338</td>
+<td>fBodyAcc-bandsEnergy()-57,64</td>
+</tr>
+<tr class="odd">
+<td>339</td>
+<td>fBodyAcc-bandsEnergy()-1,16</td>
+</tr>
+<tr class="even">
+<td>340</td>
+<td>fBodyAcc-bandsEnergy()-17,32</td>
+</tr>
+<tr class="odd">
+<td>341</td>
+<td>fBodyAcc-bandsEnergy()-33,48</td>
+</tr>
+<tr class="even">
+<td>342</td>
+<td>fBodyAcc-bandsEnergy()-49,64</td>
+</tr>
+<tr class="odd">
+<td>343</td>
+<td>fBodyAcc-bandsEnergy()-1,24</td>
+</tr>
+<tr class="even">
+<td>344</td>
+<td>fBodyAcc-bandsEnergy()-25,48</td>
+</tr>
+<tr class="odd">
+<td>345</td>
+<td>fBodyAccJerk-mean()-X</td>
+</tr>
+<tr class="even">
+<td>346</td>
+<td>fBodyAccJerk-mean()-Y</td>
+</tr>
+<tr class="odd">
+<td>347</td>
+<td>fBodyAccJerk-mean()-Z</td>
+</tr>
+<tr class="even">
+<td>348</td>
+<td>fBodyAccJerk-std()-X</td>
+</tr>
+<tr class="odd">
+<td>349</td>
+<td>fBodyAccJerk-std()-Y</td>
+</tr>
+<tr class="even">
+<td>350</td>
+<td>fBodyAccJerk-std()-Z</td>
+</tr>
+<tr class="odd">
+<td>351</td>
+<td>fBodyAccJerk-mad()-X</td>
+</tr>
+<tr class="even">
+<td>352</td>
+<td>fBodyAccJerk-mad()-Y</td>
+</tr>
+<tr class="odd">
+<td>353</td>
+<td>fBodyAccJerk-mad()-Z</td>
+</tr>
+<tr class="even">
+<td>354</td>
+<td>fBodyAccJerk-max()-X</td>
+</tr>
+<tr class="odd">
+<td>355</td>
+<td>fBodyAccJerk-max()-Y</td>
+</tr>
+<tr class="even">
+<td>356</td>
+<td>fBodyAccJerk-max()-Z</td>
+</tr>
+<tr class="odd">
+<td>357</td>
+<td>fBodyAccJerk-min()-X</td>
+</tr>
+<tr class="even">
+<td>358</td>
+<td>fBodyAccJerk-min()-Y</td>
+</tr>
+<tr class="odd">
+<td>359</td>
+<td>fBodyAccJerk-min()-Z</td>
+</tr>
+<tr class="even">
+<td>360</td>
+<td>fBodyAccJerk-sma()</td>
+</tr>
+<tr class="odd">
+<td>361</td>
+<td>fBodyAccJerk-energy()-X</td>
+</tr>
+<tr class="even">
+<td>362</td>
+<td>fBodyAccJerk-energy()-Y</td>
+</tr>
+<tr class="odd">
+<td>363</td>
+<td>fBodyAccJerk-energy()-Z</td>
+</tr>
+<tr class="even">
+<td>364</td>
+<td>fBodyAccJerk-iqr()-X</td>
+</tr>
+<tr class="odd">
+<td>365</td>
+<td>fBodyAccJerk-iqr()-Y</td>
+</tr>
+<tr class="even">
+<td>366</td>
+<td>fBodyAccJerk-iqr()-Z</td>
+</tr>
+<tr class="odd">
+<td>367</td>
+<td>fBodyAccJerk-entropy()-X</td>
+</tr>
+<tr class="even">
+<td>368</td>
+<td>fBodyAccJerk-entropy()-Y</td>
+</tr>
+<tr class="odd">
+<td>369</td>
+<td>fBodyAccJerk-entropy()-Z</td>
+</tr>
+<tr class="even">
+<td>370</td>
+<td>fBodyAccJerk-maxInds-X</td>
+</tr>
+<tr class="odd">
+<td>371</td>
+<td>fBodyAccJerk-maxInds-Y</td>
+</tr>
+<tr class="even">
+<td>372</td>
+<td>fBodyAccJerk-maxInds-Z</td>
+</tr>
+<tr class="odd">
+<td>373</td>
+<td>fBodyAccJerk-meanFreq()-X</td>
+</tr>
+<tr class="even">
+<td>374</td>
+<td>fBodyAccJerk-meanFreq()-Y</td>
+</tr>
+<tr class="odd">
+<td>375</td>
+<td>fBodyAccJerk-meanFreq()-Z</td>
+</tr>
+<tr class="even">
+<td>376</td>
+<td>fBodyAccJerk-skewness()-X</td>
+</tr>
+<tr class="odd">
+<td>377</td>
+<td>fBodyAccJerk-kurtosis()-X</td>
+</tr>
+<tr class="even">
+<td>378</td>
+<td>fBodyAccJerk-skewness()-Y</td>
+</tr>
+<tr class="odd">
+<td>379</td>
+<td>fBodyAccJerk-kurtosis()-Y</td>
+</tr>
+<tr class="even">
+<td>380</td>
+<td>fBodyAccJerk-skewness()-Z</td>
+</tr>
+<tr class="odd">
+<td>381</td>
+<td>fBodyAccJerk-kurtosis()-Z</td>
+</tr>
+<tr class="even">
+<td>382</td>
+<td>fBodyAccJerk-bandsEnergy()-1,8</td>
+</tr>
+<tr class="odd">
+<td>383</td>
+<td>fBodyAccJerk-bandsEnergy()-9,16</td>
+</tr>
+<tr class="even">
+<td>384</td>
+<td>fBodyAccJerk-bandsEnergy()-17,24</td>
+</tr>
+<tr class="odd">
+<td>385</td>
+<td>fBodyAccJerk-bandsEnergy()-25,32</td>
+</tr>
+<tr class="even">
+<td>386</td>
+<td>fBodyAccJerk-bandsEnergy()-33,40</td>
+</tr>
+<tr class="odd">
+<td>387</td>
+<td>fBodyAccJerk-bandsEnergy()-41,48</td>
+</tr>
+<tr class="even">
+<td>388</td>
+<td>fBodyAccJerk-bandsEnergy()-49,56</td>
+</tr>
+<tr class="odd">
+<td>389</td>
+<td>fBodyAccJerk-bandsEnergy()-57,64</td>
+</tr>
+<tr class="even">
+<td>390</td>
+<td>fBodyAccJerk-bandsEnergy()-1,16</td>
+</tr>
+<tr class="odd">
+<td>391</td>
+<td>fBodyAccJerk-bandsEnergy()-17,32</td>
+</tr>
+<tr class="even">
+<td>392</td>
+<td>fBodyAccJerk-bandsEnergy()-33,48</td>
+</tr>
+<tr class="odd">
+<td>393</td>
+<td>fBodyAccJerk-bandsEnergy()-49,64</td>
+</tr>
+<tr class="even">
+<td>394</td>
+<td>fBodyAccJerk-bandsEnergy()-1,24</td>
+</tr>
+<tr class="odd">
+<td>395</td>
+<td>fBodyAccJerk-bandsEnergy()-25,48</td>
+</tr>
+<tr class="even">
+<td>396</td>
+<td>fBodyAccJerk-bandsEnergy()-1,8</td>
+</tr>
+<tr class="odd">
+<td>397</td>
+<td>fBodyAccJerk-bandsEnergy()-9,16</td>
+</tr>
+<tr class="even">
+<td>398</td>
+<td>fBodyAccJerk-bandsEnergy()-17,24</td>
+</tr>
+<tr class="odd">
+<td>399</td>
+<td>fBodyAccJerk-bandsEnergy()-25,32</td>
+</tr>
+<tr class="even">
+<td>400</td>
+<td>fBodyAccJerk-bandsEnergy()-33,40</td>
+</tr>
+<tr class="odd">
+<td>401</td>
+<td>fBodyAccJerk-bandsEnergy()-41,48</td>
+</tr>
+<tr class="even">
+<td>402</td>
+<td>fBodyAccJerk-bandsEnergy()-49,56</td>
+</tr>
+<tr class="odd">
+<td>403</td>
+<td>fBodyAccJerk-bandsEnergy()-57,64</td>
+</tr>
+<tr class="even">
+<td>404</td>
+<td>fBodyAccJerk-bandsEnergy()-1,16</td>
+</tr>
+<tr class="odd">
+<td>405</td>
+<td>fBodyAccJerk-bandsEnergy()-17,32</td>
+</tr>
+<tr class="even">
+<td>406</td>
+<td>fBodyAccJerk-bandsEnergy()-33,48</td>
+</tr>
+<tr class="odd">
+<td>407</td>
+<td>fBodyAccJerk-bandsEnergy()-49,64</td>
+</tr>
+<tr class="even">
+<td>408</td>
+<td>fBodyAccJerk-bandsEnergy()-1,24</td>
+</tr>
+<tr class="odd">
+<td>409</td>
+<td>fBodyAccJerk-bandsEnergy()-25,48</td>
+</tr>
+<tr class="even">
+<td>410</td>
+<td>fBodyAccJerk-bandsEnergy()-1,8</td>
+</tr>
+<tr class="odd">
+<td>411</td>
+<td>fBodyAccJerk-bandsEnergy()-9,16</td>
+</tr>
+<tr class="even">
+<td>412</td>
+<td>fBodyAccJerk-bandsEnergy()-17,24</td>
+</tr>
+<tr class="odd">
+<td>413</td>
+<td>fBodyAccJerk-bandsEnergy()-25,32</td>
+</tr>
+<tr class="even">
+<td>414</td>
+<td>fBodyAccJerk-bandsEnergy()-33,40</td>
+</tr>
+<tr class="odd">
+<td>415</td>
+<td>fBodyAccJerk-bandsEnergy()-41,48</td>
+</tr>
+<tr class="even">
+<td>416</td>
+<td>fBodyAccJerk-bandsEnergy()-49,56</td>
+</tr>
+<tr class="odd">
+<td>417</td>
+<td>fBodyAccJerk-bandsEnergy()-57,64</td>
+</tr>
+<tr class="even">
+<td>418</td>
+<td>fBodyAccJerk-bandsEnergy()-1,16</td>
+</tr>
+<tr class="odd">
+<td>419</td>
+<td>fBodyAccJerk-bandsEnergy()-17,32</td>
+</tr>
+<tr class="even">
+<td>420</td>
+<td>fBodyAccJerk-bandsEnergy()-33,48</td>
+</tr>
+<tr class="odd">
+<td>421</td>
+<td>fBodyAccJerk-bandsEnergy()-49,64</td>
+</tr>
+<tr class="even">
+<td>422</td>
+<td>fBodyAccJerk-bandsEnergy()-1,24</td>
+</tr>
+<tr class="odd">
+<td>423</td>
+<td>fBodyAccJerk-bandsEnergy()-25,48</td>
+</tr>
+<tr class="even">
+<td>424</td>
+<td>fBodyGyro-mean()-X</td>
+</tr>
+<tr class="odd">
+<td>425</td>
+<td>fBodyGyro-mean()-Y</td>
+</tr>
+<tr class="even">
+<td>426</td>
+<td>fBodyGyro-mean()-Z</td>
+</tr>
+<tr class="odd">
+<td>427</td>
+<td>fBodyGyro-std()-X</td>
+</tr>
+<tr class="even">
+<td>428</td>
+<td>fBodyGyro-std()-Y</td>
+</tr>
+<tr class="odd">
+<td>429</td>
+<td>fBodyGyro-std()-Z</td>
+</tr>
+<tr class="even">
+<td>430</td>
+<td>fBodyGyro-mad()-X</td>
+</tr>
+<tr class="odd">
+<td>431</td>
+<td>fBodyGyro-mad()-Y</td>
+</tr>
+<tr class="even">
+<td>432</td>
+<td>fBodyGyro-mad()-Z</td>
+</tr>
+<tr class="odd">
+<td>433</td>
+<td>fBodyGyro-max()-X</td>
+</tr>
+<tr class="even">
+<td>434</td>
+<td>fBodyGyro-max()-Y</td>
+</tr>
+<tr class="odd">
+<td>435</td>
+<td>fBodyGyro-max()-Z</td>
+</tr>
+<tr class="even">
+<td>436</td>
+<td>fBodyGyro-min()-X</td>
+</tr>
+<tr class="odd">
+<td>437</td>
+<td>fBodyGyro-min()-Y</td>
+</tr>
+<tr class="even">
+<td>438</td>
+<td>fBodyGyro-min()-Z</td>
+</tr>
+<tr class="odd">
+<td>439</td>
+<td>fBodyGyro-sma()</td>
+</tr>
+<tr class="even">
+<td>440</td>
+<td>fBodyGyro-energy()-X</td>
+</tr>
+<tr class="odd">
+<td>441</td>
+<td>fBodyGyro-energy()-Y</td>
+</tr>
+<tr class="even">
+<td>442</td>
+<td>fBodyGyro-energy()-Z</td>
+</tr>
+<tr class="odd">
+<td>443</td>
+<td>fBodyGyro-iqr()-X</td>
+</tr>
+<tr class="even">
+<td>444</td>
+<td>fBodyGyro-iqr()-Y</td>
+</tr>
+<tr class="odd">
+<td>445</td>
+<td>fBodyGyro-iqr()-Z</td>
+</tr>
+<tr class="even">
+<td>446</td>
+<td>fBodyGyro-entropy()-X</td>
+</tr>
+<tr class="odd">
+<td>447</td>
+<td>fBodyGyro-entropy()-Y</td>
+</tr>
+<tr class="even">
+<td>448</td>
+<td>fBodyGyro-entropy()-Z</td>
+</tr>
+<tr class="odd">
+<td>449</td>
+<td>fBodyGyro-maxInds-X</td>
+</tr>
+<tr class="even">
+<td>450</td>
+<td>fBodyGyro-maxInds-Y</td>
+</tr>
+<tr class="odd">
+<td>451</td>
+<td>fBodyGyro-maxInds-Z</td>
+</tr>
+<tr class="even">
+<td>452</td>
+<td>fBodyGyro-meanFreq()-X</td>
+</tr>
+<tr class="odd">
+<td>453</td>
+<td>fBodyGyro-meanFreq()-Y</td>
+</tr>
+<tr class="even">
+<td>454</td>
+<td>fBodyGyro-meanFreq()-Z</td>
+</tr>
+<tr class="odd">
+<td>455</td>
+<td>fBodyGyro-skewness()-X</td>
+</tr>
+<tr class="even">
+<td>456</td>
+<td>fBodyGyro-kurtosis()-X</td>
+</tr>
+<tr class="odd">
+<td>457</td>
+<td>fBodyGyro-skewness()-Y</td>
+</tr>
+<tr class="even">
+<td>458</td>
+<td>fBodyGyro-kurtosis()-Y</td>
+</tr>
+<tr class="odd">
+<td>459</td>
+<td>fBodyGyro-skewness()-Z</td>
+</tr>
+<tr class="even">
+<td>460</td>
+<td>fBodyGyro-kurtosis()-Z</td>
+</tr>
+<tr class="odd">
+<td>461</td>
+<td>fBodyGyro-bandsEnergy()-1,8</td>
+</tr>
+<tr class="even">
+<td>462</td>
+<td>fBodyGyro-bandsEnergy()-9,16</td>
+</tr>
+<tr class="odd">
+<td>463</td>
+<td>fBodyGyro-bandsEnergy()-17,24</td>
+</tr>
+<tr class="even">
+<td>464</td>
+<td>fBodyGyro-bandsEnergy()-25,32</td>
+</tr>
+<tr class="odd">
+<td>465</td>
+<td>fBodyGyro-bandsEnergy()-33,40</td>
+</tr>
+<tr class="even">
+<td>466</td>
+<td>fBodyGyro-bandsEnergy()-41,48</td>
+</tr>
+<tr class="odd">
+<td>467</td>
+<td>fBodyGyro-bandsEnergy()-49,56</td>
+</tr>
+<tr class="even">
+<td>468</td>
+<td>fBodyGyro-bandsEnergy()-57,64</td>
+</tr>
+<tr class="odd">
+<td>469</td>
+<td>fBodyGyro-bandsEnergy()-1,16</td>
+</tr>
+<tr class="even">
+<td>470</td>
+<td>fBodyGyro-bandsEnergy()-17,32</td>
+</tr>
+<tr class="odd">
+<td>471</td>
+<td>fBodyGyro-bandsEnergy()-33,48</td>
+</tr>
+<tr class="even">
+<td>472</td>
+<td>fBodyGyro-bandsEnergy()-49,64</td>
+</tr>
+<tr class="odd">
+<td>473</td>
+<td>fBodyGyro-bandsEnergy()-1,24</td>
+</tr>
+<tr class="even">
+<td>474</td>
+<td>fBodyGyro-bandsEnergy()-25,48</td>
+</tr>
+<tr class="odd">
+<td>475</td>
+<td>fBodyGyro-bandsEnergy()-1,8</td>
+</tr>
+<tr class="even">
+<td>476</td>
+<td>fBodyGyro-bandsEnergy()-9,16</td>
+</tr>
+<tr class="odd">
+<td>477</td>
+<td>fBodyGyro-bandsEnergy()-17,24</td>
+</tr>
+<tr class="even">
+<td>478</td>
+<td>fBodyGyro-bandsEnergy()-25,32</td>
+</tr>
+<tr class="odd">
+<td>479</td>
+<td>fBodyGyro-bandsEnergy()-33,40</td>
+</tr>
+<tr class="even">
+<td>480</td>
+<td>fBodyGyro-bandsEnergy()-41,48</td>
+</tr>
+<tr class="odd">
+<td>481</td>
+<td>fBodyGyro-bandsEnergy()-49,56</td>
+</tr>
+<tr class="even">
+<td>482</td>
+<td>fBodyGyro-bandsEnergy()-57,64</td>
+</tr>
+<tr class="odd">
+<td>483</td>
+<td>fBodyGyro-bandsEnergy()-1,16</td>
+</tr>
+<tr class="even">
+<td>484</td>
+<td>fBodyGyro-bandsEnergy()-17,32</td>
+</tr>
+<tr class="odd">
+<td>485</td>
+<td>fBodyGyro-bandsEnergy()-33,48</td>
+</tr>
+<tr class="even">
+<td>486</td>
+<td>fBodyGyro-bandsEnergy()-49,64</td>
+</tr>
+<tr class="odd">
+<td>487</td>
+<td>fBodyGyro-bandsEnergy()-1,24</td>
+</tr>
+<tr class="even">
+<td>488</td>
+<td>fBodyGyro-bandsEnergy()-25,48</td>
+</tr>
+<tr class="odd">
+<td>489</td>
+<td>fBodyGyro-bandsEnergy()-1,8</td>
+</tr>
+<tr class="even">
+<td>490</td>
+<td>fBodyGyro-bandsEnergy()-9,16</td>
+</tr>
+<tr class="odd">
+<td>491</td>
+<td>fBodyGyro-bandsEnergy()-17,24</td>
+</tr>
+<tr class="even">
+<td>492</td>
+<td>fBodyGyro-bandsEnergy()-25,32</td>
+</tr>
+<tr class="odd">
+<td>493</td>
+<td>fBodyGyro-bandsEnergy()-33,40</td>
+</tr>
+<tr class="even">
+<td>494</td>
+<td>fBodyGyro-bandsEnergy()-41,48</td>
+</tr>
+<tr class="odd">
+<td>495</td>
+<td>fBodyGyro-bandsEnergy()-49,56</td>
+</tr>
+<tr class="even">
+<td>496</td>
+<td>fBodyGyro-bandsEnergy()-57,64</td>
+</tr>
+<tr class="odd">
+<td>497</td>
+<td>fBodyGyro-bandsEnergy()-1,16</td>
+</tr>
+<tr class="even">
+<td>498</td>
+<td>fBodyGyro-bandsEnergy()-17,32</td>
+</tr>
+<tr class="odd">
+<td>499</td>
+<td>fBodyGyro-bandsEnergy()-33,48</td>
+</tr>
+<tr class="even">
+<td>500</td>
+<td>fBodyGyro-bandsEnergy()-49,64</td>
+</tr>
+<tr class="odd">
+<td>501</td>
+<td>fBodyGyro-bandsEnergy()-1,24</td>
+</tr>
+<tr class="even">
+<td>502</td>
+<td>fBodyGyro-bandsEnergy()-25,48</td>
+</tr>
+<tr class="odd">
+<td>503</td>
+<td>fBodyAccMag-mean()</td>
+</tr>
+<tr class="even">
+<td>504</td>
+<td>fBodyAccMag-std()</td>
+</tr>
+<tr class="odd">
+<td>505</td>
+<td>fBodyAccMag-mad()</td>
+</tr>
+<tr class="even">
+<td>506</td>
+<td>fBodyAccMag-max()</td>
+</tr>
+<tr class="odd">
+<td>507</td>
+<td>fBodyAccMag-min()</td>
+</tr>
+<tr class="even">
+<td>508</td>
+<td>fBodyAccMag-sma()</td>
+</tr>
+<tr class="odd">
+<td>509</td>
+<td>fBodyAccMag-energy()</td>
+</tr>
+<tr class="even">
+<td>510</td>
+<td>fBodyAccMag-iqr()</td>
+</tr>
+<tr class="odd">
+<td>511</td>
+<td>fBodyAccMag-entropy()</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>fBodyAccMag-maxInds</td>
+</tr>
+<tr class="odd">
+<td>513</td>
+<td>fBodyAccMag-meanFreq()</td>
+</tr>
+<tr class="even">
+<td>514</td>
+<td>fBodyAccMag-skewness()</td>
+</tr>
+<tr class="odd">
+<td>515</td>
+<td>fBodyAccMag-kurtosis()</td>
+</tr>
+<tr class="even">
+<td>516</td>
+<td>fBodyBodyAccJerkMag-mean()</td>
+</tr>
+<tr class="odd">
+<td>517</td>
+<td>fBodyBodyAccJerkMag-std()</td>
+</tr>
+<tr class="even">
+<td>518</td>
+<td>fBodyBodyAccJerkMag-mad()</td>
+</tr>
+<tr class="odd">
+<td>519</td>
+<td>fBodyBodyAccJerkMag-max()</td>
+</tr>
+<tr class="even">
+<td>520</td>
+<td>fBodyBodyAccJerkMag-min()</td>
+</tr>
+<tr class="odd">
+<td>521</td>
+<td>fBodyBodyAccJerkMag-sma()</td>
+</tr>
+<tr class="even">
+<td>522</td>
+<td>fBodyBodyAccJerkMag-energy()</td>
+</tr>
+<tr class="odd">
+<td>523</td>
+<td>fBodyBodyAccJerkMag-iqr()</td>
+</tr>
+<tr class="even">
+<td>524</td>
+<td>fBodyBodyAccJerkMag-entropy()</td>
+</tr>
+<tr class="odd">
+<td>525</td>
+<td>fBodyBodyAccJerkMag-maxInds</td>
+</tr>
+<tr class="even">
+<td>526</td>
+<td>fBodyBodyAccJerkMag-meanFreq()</td>
+</tr>
+<tr class="odd">
+<td>527</td>
+<td>fBodyBodyAccJerkMag-skewness()</td>
+</tr>
+<tr class="even">
+<td>528</td>
+<td>fBodyBodyAccJerkMag-kurtosis()</td>
+</tr>
+<tr class="odd">
+<td>529</td>
+<td>fBodyBodyGyroMag-mean()</td>
+</tr>
+<tr class="even">
+<td>530</td>
+<td>fBodyBodyGyroMag-std()</td>
+</tr>
+<tr class="odd">
+<td>531</td>
+<td>fBodyBodyGyroMag-mad()</td>
+</tr>
+<tr class="even">
+<td>532</td>
+<td>fBodyBodyGyroMag-max()</td>
+</tr>
+<tr class="odd">
+<td>533</td>
+<td>fBodyBodyGyroMag-min()</td>
+</tr>
+<tr class="even">
+<td>534</td>
+<td>fBodyBodyGyroMag-sma()</td>
+</tr>
+<tr class="odd">
+<td>535</td>
+<td>fBodyBodyGyroMag-energy()</td>
+</tr>
+<tr class="even">
+<td>536</td>
+<td>fBodyBodyGyroMag-iqr()</td>
+</tr>
+<tr class="odd">
+<td>537</td>
+<td>fBodyBodyGyroMag-entropy()</td>
+</tr>
+<tr class="even">
+<td>538</td>
+<td>fBodyBodyGyroMag-maxInds</td>
+</tr>
+<tr class="odd">
+<td>539</td>
+<td>fBodyBodyGyroMag-meanFreq()</td>
+</tr>
+<tr class="even">
+<td>540</td>
+<td>fBodyBodyGyroMag-skewness()</td>
+</tr>
+<tr class="odd">
+<td>541</td>
+<td>fBodyBodyGyroMag-kurtosis()</td>
+</tr>
+<tr class="even">
+<td>542</td>
+<td>fBodyBodyGyroJerkMag-mean()</td>
+</tr>
+<tr class="odd">
+<td>543</td>
+<td>fBodyBodyGyroJerkMag-std()</td>
+</tr>
+<tr class="even">
+<td>544</td>
+<td>fBodyBodyGyroJerkMag-mad()</td>
+</tr>
+<tr class="odd">
+<td>545</td>
+<td>fBodyBodyGyroJerkMag-max()</td>
+</tr>
+<tr class="even">
+<td>546</td>
+<td>fBodyBodyGyroJerkMag-min()</td>
+</tr>
+<tr class="odd">
+<td>547</td>
+<td>fBodyBodyGyroJerkMag-sma()</td>
+</tr>
+<tr class="even">
+<td>548</td>
+<td>fBodyBodyGyroJerkMag-energy()</td>
+</tr>
+<tr class="odd">
+<td>549</td>
+<td>fBodyBodyGyroJerkMag-iqr()</td>
+</tr>
+<tr class="even">
+<td>550</td>
+<td>fBodyBodyGyroJerkMag-entropy()</td>
+</tr>
+<tr class="odd">
+<td>551</td>
+<td>fBodyBodyGyroJerkMag-maxInds</td>
+</tr>
+<tr class="even">
+<td>552</td>
+<td>fBodyBodyGyroJerkMag-meanFreq()</td>
+</tr>
+<tr class="odd">
+<td>553</td>
+<td>fBodyBodyGyroJerkMag-skewness()</td>
+</tr>
+<tr class="even">
+<td>554</td>
+<td>fBodyBodyGyroJerkMag-kurtosis()</td>
+</tr>
+<tr class="odd">
+<td>555</td>
+<td>angle(tBodyAccMean,gravity)</td>
+</tr>
+<tr class="even">
+<td>556</td>
+<td>angle(tBodyAccJerkMean),gravityMean)</td>
+</tr>
+<tr class="odd">
+<td>557</td>
+<td>angle(tBodyGyroMean,gravityMean)</td>
+</tr>
+<tr class="even">
+<td>558</td>
+<td>angle(tBodyGyroJerkMean,gravityMean)</td>
+</tr>
+<tr class="odd">
+<td>559</td>
+<td>angle(X,gravityMean)</td>
+</tr>
+<tr class="even">
+<td>560</td>
+<td>angle(Y,gravityMean)</td>
+</tr>
+<tr class="odd">
+<td>561</td>
+<td>angle(Z,gravityMean)</td>
+</tr>
+<tr class="even">
+<td>562</td>
+<td>Activity_code</td>
+</tr>
+<tr class="odd">
+<td>563</td>
+<td>Subject_ID</td>
+</tr>
+</tbody>
+</table>
+<div id="new-codebook-for-extracted-raw-data" class="section level3">
+<h3>New Codebook for Extracted Raw Data</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>FieldName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Subject_ID</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Activity_code</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>tBodyAcc-mean()-X</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>tBodyAcc-mean()-Y</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>tBodyAcc-mean()-Z</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>tGravityAcc-mean()-X</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>tGravityAcc-mean()-Y</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>tGravityAcc-mean()-Z</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>tBodyAccJerk-mean()-X</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>tBodyAccJerk-mean()-Y</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>tBodyAccJerk-mean()-Z</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>tBodyGyro-mean()-X</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>tBodyGyro-mean()-Y</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>tBodyGyro-mean()-Z</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>tBodyGyroJerk-mean()-X</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>tBodyGyroJerk-mean()-Y</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>tBodyGyroJerk-mean()-Z</td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>tBodyAccMag-mean()</td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>tGravityAccMag-mean()</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>tBodyAccJerkMag-mean()</td>
+</tr>
+<tr class="odd">
+<td>21</td>
+<td>tBodyGyroMag-mean()</td>
+</tr>
+<tr class="even">
+<td>22</td>
+<td>tBodyGyroJerkMag-mean()</td>
+</tr>
+<tr class="odd">
+<td>23</td>
+<td>fBodyAcc-mean()-X</td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td>fBodyAcc-mean()-Y</td>
+</tr>
+<tr class="odd">
+<td>25</td>
+<td>fBodyAcc-mean()-Z</td>
+</tr>
+<tr class="even">
+<td>26</td>
+<td>fBodyAcc-meanFreq()-X</td>
+</tr>
+<tr class="odd">
+<td>27</td>
+<td>fBodyAcc-meanFreq()-Y</td>
+</tr>
+<tr class="even">
+<td>28</td>
+<td>fBodyAcc-meanFreq()-Z</td>
+</tr>
+<tr class="odd">
+<td>29</td>
+<td>fBodyAccJerk-mean()-X</td>
+</tr>
+<tr class="even">
+<td>30</td>
+<td>fBodyAccJerk-mean()-Y</td>
+</tr>
+<tr class="odd">
+<td>31</td>
+<td>fBodyAccJerk-mean()-Z</td>
+</tr>
+<tr class="even">
+<td>32</td>
+<td>fBodyAccJerk-meanFreq()-X</td>
+</tr>
+<tr class="odd">
+<td>33</td>
+<td>fBodyAccJerk-meanFreq()-Y</td>
+</tr>
+<tr class="even">
+<td>34</td>
+<td>fBodyAccJerk-meanFreq()-Z</td>
+</tr>
+<tr class="odd">
+<td>35</td>
+<td>fBodyGyro-mean()-X</td>
+</tr>
+<tr class="even">
+<td>36</td>
+<td>fBodyGyro-mean()-Y</td>
+</tr>
+<tr class="odd">
+<td>37</td>
+<td>fBodyGyro-mean()-Z</td>
+</tr>
+<tr class="even">
+<td>38</td>
+<td>fBodyGyro-meanFreq()-X</td>
+</tr>
+<tr class="odd">
+<td>39</td>
+<td>fBodyGyro-meanFreq()-Y</td>
+</tr>
+<tr class="even">
+<td>40</td>
+<td>fBodyGyro-meanFreq()-Z</td>
+</tr>
+<tr class="odd">
+<td>41</td>
+<td>fBodyAccMag-mean()</td>
+</tr>
+<tr class="even">
+<td>42</td>
+<td>fBodyAccMag-meanFreq()</td>
+</tr>
+<tr class="odd">
+<td>43</td>
+<td>fBodyBodyAccJerkMag-mean()</td>
+</tr>
+<tr class="even">
+<td>44</td>
+<td>fBodyBodyAccJerkMag-meanFreq()</td>
+</tr>
+<tr class="odd">
+<td>45</td>
+<td>fBodyBodyGyroMag-mean()</td>
+</tr>
+<tr class="even">
+<td>46</td>
+<td>fBodyBodyGyroMag-meanFreq()</td>
+</tr>
+<tr class="odd">
+<td>47</td>
+<td>fBodyBodyGyroJerkMag-mean()</td>
+</tr>
+<tr class="even">
+<td>48</td>
+<td>fBodyBodyGyroJerkMag-meanFreq()</td>
+</tr>
+<tr class="odd">
+<td>49</td>
+<td>tBodyAcc-std()-X</td>
+</tr>
+<tr class="even">
+<td>50</td>
+<td>tBodyAcc-std()-Y</td>
+</tr>
+<tr class="odd">
+<td>51</td>
+<td>tBodyAcc-std()-Z</td>
+</tr>
+<tr class="even">
+<td>52</td>
+<td>tGravityAcc-std()-X</td>
+</tr>
+<tr class="odd">
+<td>53</td>
+<td>tGravityAcc-std()-Y</td>
+</tr>
+<tr class="even">
+<td>54</td>
+<td>tGravityAcc-std()-Z</td>
+</tr>
+<tr class="odd">
+<td>55</td>
+<td>tBodyAccJerk-std()-X</td>
+</tr>
+<tr class="even">
+<td>56</td>
+<td>tBodyAccJerk-std()-Y</td>
+</tr>
+<tr class="odd">
+<td>57</td>
+<td>tBodyAccJerk-std()-Z</td>
+</tr>
+<tr class="even">
+<td>58</td>
+<td>tBodyGyro-std()-X</td>
+</tr>
+<tr class="odd">
+<td>59</td>
+<td>tBodyGyro-std()-Y</td>
+</tr>
+<tr class="even">
+<td>60</td>
+<td>tBodyGyro-std()-Z</td>
+</tr>
+<tr class="odd">
+<td>61</td>
+<td>tBodyGyroJerk-std()-X</td>
+</tr>
+<tr class="even">
+<td>62</td>
+<td>tBodyGyroJerk-std()-Y</td>
+</tr>
+<tr class="odd">
+<td>63</td>
+<td>tBodyGyroJerk-std()-Z</td>
+</tr>
+<tr class="even">
+<td>64</td>
+<td>tBodyAccMag-std()</td>
+</tr>
+<tr class="odd">
+<td>65</td>
+<td>tGravityAccMag-std()</td>
+</tr>
+<tr class="even">
+<td>66</td>
+<td>tBodyAccJerkMag-std()</td>
+</tr>
+<tr class="odd">
+<td>67</td>
+<td>tBodyGyroMag-std()</td>
+</tr>
+<tr class="even">
+<td>68</td>
+<td>tBodyGyroJerkMag-std()</td>
+</tr>
+<tr class="odd">
+<td>69</td>
+<td>fBodyAcc-std()-X</td>
+</tr>
+<tr class="even">
+<td>70</td>
+<td>fBodyAcc-std()-Y</td>
+</tr>
+<tr class="odd">
+<td>71</td>
+<td>fBodyAcc-std()-Z</td>
+</tr>
+<tr class="even">
+<td>72</td>
+<td>fBodyAccJerk-std()-X</td>
+</tr>
+<tr class="odd">
+<td>73</td>
+<td>fBodyAccJerk-std()-Y</td>
+</tr>
+<tr class="even">
+<td>74</td>
+<td>fBodyAccJerk-std()-Z</td>
+</tr>
+<tr class="odd">
+<td>75</td>
+<td>fBodyGyro-std()-X</td>
+</tr>
+<tr class="even">
+<td>76</td>
+<td>fBodyGyro-std()-Y</td>
+</tr>
+<tr class="odd">
+<td>77</td>
+<td>fBodyGyro-std()-Z</td>
+</tr>
+<tr class="even">
+<td>78</td>
+<td>fBodyAccMag-std()</td>
+</tr>
+<tr class="odd">
+<td>79</td>
+<td>fBodyBodyAccJerkMag-std()</td>
+</tr>
+<tr class="even">
+<td>80</td>
+<td>fBodyBodyGyroMag-std()</td>
+</tr>
+<tr class="odd">
+<td>81</td>
+<td>fBodyBodyGyroJerkMag-std()</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 
 
