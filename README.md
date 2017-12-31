@@ -4,13 +4,13 @@ Goal of this project: Prepare tidy data that can be used for later analysis.
 
 **Tasklist**
 
-- [ ] The submitted data set is tidy.
+- [x] The submitted data set is tidy.
 
-- [ ] The Github repo contains the required scripts.
+- [x] The Github repo contains the required scripts.
 
-- [ ] GitHub contains a code book that modifies and updates the available codebooks with the data to indicate all the *variables* and *summaries* calculated, along with *units*, and any other relevant information.
+- [x] GitHub contains a code book that modifies and updates the available codebooks with the data to indicate all the *variables* and *summaries* calculated, along with *units*, and any other relevant information.
 
-- [ ] The README that explains the analysis files is clear and understandable.
+- [x] The README that explains the analysis files is clear and understandable.
 
 - [x] The work submitted for this project is the work of the student who submitted it.
 
@@ -18,18 +18,33 @@ Goal of this project: Prepare tidy data that can be used for later analysis.
 This repo explains how all of the scripts work and how they are connected.
 
 ### CONTENTS OF REPO
-1. Parent Repo which contains README.MD and RStudio_Project folder (W4_GCD_Project).
+1. Parent Repo which contains README.MD & README.html and RStudio_Project folder (W4_GCD_Project).
 2. Within W4_GCD_Project folder is all the files needed to enable a reproducable analysis:
 
-    2.1 Raw Data Folder: Original "un-tidied" / raw form of data
+    2.1 Raw Data Folder: Original "un-tidied" / raw form of data and lists
     
-    2.2 Data Folder: Files created by RunAnlysis.R script file
+    2.2 Data Folder: Tidy Data File and Grouped Average File created by 
+    RunAnlysis.R script file
     
-    2.3 RStudio Project File: W4_GCD_Project.Rproj
+    2.3 RStudio Project File: W4_GCD_Project.Rproj  
+    (Run this file to open the project environment in RStudio)
     
-    2.4 Codebook.md: Detailed markdown file of data profile and structure
+    2.4 Codebook.md & CodeBook.html: Detailed markdown file of data profile
+    and structure.  It is recommended to view the html file instead.
     
     2.5 run_analysis.R: R Script to tidy Data and perform anlysis.
+    
+    2.6 CreateCodeBook.R: R Script file containing a function created
+    to generate lists for the codebook. The above file in 2.5 will source this 
+    file to run code.
+    
+    2.7 Rename.R: R Script file containing a function created
+    to generate Tidy Variable Names used to overwrite "untidy" column names.
+    The above file in 2.5 will source this file to run code.
+    
+    2.8 addDescription.R: R Script file containing a function created
+    to generate meaningful descriptions for the Tidy Variable Names.
+    The above file in 2.5 will source this file to run code.
     
 
 #### Project Briefing

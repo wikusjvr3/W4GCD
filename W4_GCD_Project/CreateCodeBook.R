@@ -9,7 +9,7 @@
 CodeBook <- function(x,filename, colname = c("Column", "FieldName",
                                              "Description", "Type")) {
        for (i in seq_len(ncol(x))) {
-        if (i > 4){break
+        if (i == 5){break
         } else {
             vec <- paste(rep("-", max(nchar(as.character(x[,i])))),sep="",
                          collapse="")

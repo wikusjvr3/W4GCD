@@ -1,0 +1,83 @@
+Column|FieldName|Description|Type
+--|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------
+1|Actvty_fctrs|1:Walking 2:Walking_Upstairs 3:Walking_Downstairs 4:Sitting 5:Standing 6:Laying|Group_by 1
+2|Subject_ID|The Unique ID number given to volunteer.|Group_by 2
+3|GrpdAvgTimeBodyAccMeanX|Time domain signal for the Mean value of the Body's acceleration measure  for the 3-axial raw signal X.|Calculation: Grouped Average
+4|GrpdAvgTimeBodyAccMeanY|Time domain signal for the Mean value of the Body's acceleration measure  for the 3-axial raw signal Y.|Calculation: Grouped Average
+5|GrpdAvgTimeBodyAccMeanZ|Time domain signal for the Mean value of the Body's acceleration measure  for the 3-axial raw signal Z.|Calculation: Grouped Average
+6|GrpdAvgTimeGravityAccMeanX|Time domain signal for the Mean value of the Gravity acceleration measure  for the 3-axial raw signal X.|Calculation: Grouped Average
+7|GrpdAvgTimeGravityAccMeanY|Time domain signal for the Mean value of the Gravity acceleration measure  for the 3-axial raw signal Y.|Calculation: Grouped Average
+8|GrpdAvgTimeGravityAccMeanZ|Time domain signal for the Mean value of the Gravity acceleration measure  for the 3-axial raw signal Z.|Calculation: Grouped Average
+9|GrpdAvgTimeBodyAccJerkMeanX|Time domain signal for the Mean value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal X.|Calculation: Grouped Average
+10|GrpdAvgTimeBodyAccJerkMeanY|Time domain signal for the Mean value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Y.|Calculation: Grouped Average
+11|GrpdAvgTimeBodyAccJerkMeanZ|Time domain signal for the Mean value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Z.|Calculation: Grouped Average
+12|GrpdAvgTimeBodyGyroMeanX|Time domain signal for the Mean value of the Body's Gyroscope measure  for the 3-axial raw signal X.|Calculation: Grouped Average
+13|GrpdAvgTimeBodyGyroMeanY|Time domain signal for the Mean value of the Body's Gyroscope measure  for the 3-axial raw signal Y.|Calculation: Grouped Average
+14|GrpdAvgTimeBodyGyroMeanZ|Time domain signal for the Mean value of the Body's Gyroscope measure  for the 3-axial raw signal Z.|Calculation: Grouped Average
+15|GrpdAvgTimeBodyGyroJerkMeanX|Time domain signal for the Mean value of the Body's Gyroscope measure for a Jerk movement  for the 3-axial raw signal X.|Calculation: Grouped Average
+16|GrpdAvgTimeBodyGyroJerkMeanY|Time domain signal for the Mean value of the Body's Gyroscope measure for a Jerk movement  for the 3-axial raw signal Y.|Calculation: Grouped Average
+17|GrpdAvgTimeBodyGyroJerkMeanZ|Time domain signal for the Mean value of the Body's Gyroscope measure for a Jerk movement  for the 3-axial raw signal Z.|Calculation: Grouped Average
+18|GrpdAvgTimeBodyAccMagMean|Time domain signal for the Mean value of the Body's acceleration measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+19|GrpdAvgTimeGravityAccMagMean|Time domain signal for the Mean value of the Gravity acceleration measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+20|GrpdAvgTimeBodyAccJerkMagMean|Time domain signal for the Mean value of the Body's acceleration measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+21|GrpdAvgTimeBodyGyroMagMean|Time domain signal for the Mean value of the Body's Gyroscope measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+22|GrpdAvgTimeBodyGyroJerkMagMean|Time domain signal for the Mean value of the Body's Gyroscope measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+23|GrpdAvgFreqBodyAccMeanX|Frequency domain signal for the Mean value of the Body's acceleration measure  for the 3-axial raw signal X.|Calculation: Grouped Average
+24|GrpdAvgFreqBodyAccMeanY|Frequency domain signal for the Mean value of the Body's acceleration measure  for the 3-axial raw signal Y.|Calculation: Grouped Average
+25|GrpdAvgFreqBodyAccMeanZ|Frequency domain signal for the Mean value of the Body's acceleration measure  for the 3-axial raw signal Z.|Calculation: Grouped Average
+26|GrpdAvgFreqBodyAccFreqavgX|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure  for the 3-axial raw signal X.|Calculation: Grouped Average
+27|GrpdAvgFreqBodyAccFreqavgY|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure  for the 3-axial raw signal Y.|Calculation: Grouped Average
+28|GrpdAvgFreqBodyAccFreqavgZ|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure  for the 3-axial raw signal Z.|Calculation: Grouped Average
+29|GrpdAvgFreqBodyAccJerkMeanX|Frequency domain signal for the Mean value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal X.|Calculation: Grouped Average
+30|GrpdAvgFreqBodyAccJerkMeanY|Frequency domain signal for the Mean value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Y.|Calculation: Grouped Average
+31|GrpdAvgFreqBodyAccJerkMeanZ|Frequency domain signal for the Mean value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Z.|Calculation: Grouped Average
+32|GrpdAvgFreqBodyAccJerkFreqavgX|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal X.|Calculation: Grouped Average
+33|GrpdAvgFreqBodyAccJerkFreqavgY|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Y.|Calculation: Grouped Average
+34|GrpdAvgFreqBodyAccJerkFreqavgZ|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Z.|Calculation: Grouped Average
+35|GrpdAvgFreqBodyGyroMeanX|Frequency domain signal for the Mean value of the Body's Gyroscope measure  for the 3-axial raw signal X.|Calculation: Grouped Average
+36|GrpdAvgFreqBodyGyroMeanY|Frequency domain signal for the Mean value of the Body's Gyroscope measure  for the 3-axial raw signal Y.|Calculation: Grouped Average
+37|GrpdAvgFreqBodyGyroMeanZ|Frequency domain signal for the Mean value of the Body's Gyroscope measure  for the 3-axial raw signal Z.|Calculation: Grouped Average
+38|GrpdAvgFreqBodyGyroFreqavgX|Frequency domain signal for the Weighted average of the frequency components of the Body's Gyroscope measure  for the 3-axial raw signal X.|Calculation: Grouped Average
+39|GrpdAvgFreqBodyGyroFreqavgY|Frequency domain signal for the Weighted average of the frequency components of the Body's Gyroscope measure  for the 3-axial raw signal Y.|Calculation: Grouped Average
+40|GrpdAvgFreqBodyGyroFreqavgZ|Frequency domain signal for the Weighted average of the frequency components of the Body's Gyroscope measure  for the 3-axial raw signal Z.|Calculation: Grouped Average
+41|GrpdAvgFreqBodyAccMagMean|Frequency domain signal for the Mean value of the Body's acceleration measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+42|GrpdAvgFreqBodyAccMagFreqavg|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+43|GrpdAvgFreqBodyAccJerkMagMean|Frequency domain signal for the Mean value of the Body's acceleration measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+44|GrpdAvgFreqBodyAccJerkMagFreqavg|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+45|GrpdAvgFreqBodyGyroMagMean|Frequency domain signal for the Mean value of the Body's Gyroscope measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+46|GrpdAvgFreqBodyGyroMagFreqavg|Frequency domain signal for the Weighted average of the frequency components of the Body's Gyroscope measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+47|GrpdAvgFreqBodyGyroJerkMagMean|Frequency domain signal for the Mean value of the Body's Gyroscope measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+48|GrpdAvgFreqBodyGyroJerkMagFreqavg|Frequency domain signal for the Weighted average of the frequency components of the Body's Gyroscope measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+49|GrpdAvgTimeBodyAccStdevX|Time domain signal for the Standard Deviation value of the Body's acceleration measure  for the 3-axial raw signal X.|Calculation: Grouped Average
+50|GrpdAvgTimeBodyAccStdevY|Time domain signal for the Standard Deviation value of the Body's acceleration measure  for the 3-axial raw signal Y.|Calculation: Grouped Average
+51|GrpdAvgTimeBodyAccStdevZ|Time domain signal for the Standard Deviation value of the Body's acceleration measure  for the 3-axial raw signal Z.|Calculation: Grouped Average
+52|GrpdAvgTimeGravityAccStdevX|Time domain signal for the Standard Deviation value of the Gravity acceleration measure  for the 3-axial raw signal X.|Calculation: Grouped Average
+53|GrpdAvgTimeGravityAccStdevY|Time domain signal for the Standard Deviation value of the Gravity acceleration measure  for the 3-axial raw signal Y.|Calculation: Grouped Average
+54|GrpdAvgTimeGravityAccStdevZ|Time domain signal for the Standard Deviation value of the Gravity acceleration measure  for the 3-axial raw signal Z.|Calculation: Grouped Average
+55|GrpdAvgTimeBodyAccJerkStdevX|Time domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal X.|Calculation: Grouped Average
+56|GrpdAvgTimeBodyAccJerkStdevY|Time domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Y.|Calculation: Grouped Average
+57|GrpdAvgTimeBodyAccJerkStdevZ|Time domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Z.|Calculation: Grouped Average
+58|GrpdAvgTimeBodyGyroStdevX|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure  for the 3-axial raw signal X.|Calculation: Grouped Average
+59|GrpdAvgTimeBodyGyroStdevY|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure  for the 3-axial raw signal Y.|Calculation: Grouped Average
+60|GrpdAvgTimeBodyGyroStdevZ|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure  for the 3-axial raw signal Z.|Calculation: Grouped Average
+61|GrpdAvgTimeBodyGyroJerkStdevX|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure for a Jerk movement  for the 3-axial raw signal X.|Calculation: Grouped Average
+62|GrpdAvgTimeBodyGyroJerkStdevY|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure for a Jerk movement  for the 3-axial raw signal Y.|Calculation: Grouped Average
+63|GrpdAvgTimeBodyGyroJerkStdevZ|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure for a Jerk movement  for the 3-axial raw signal Z.|Calculation: Grouped Average
+64|GrpdAvgTimeBodyAccMagStdev|Time domain signal for the Standard Deviation value of the Body's acceleration measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+65|GrpdAvgTimeGravityAccMagStdev|Time domain signal for the Standard Deviation value of the Gravity acceleration measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+66|GrpdAvgTimeBodyAccJerkMagStdev|Time domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+67|GrpdAvgTimeBodyGyroMagStdev|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+68|GrpdAvgTimeBodyGyroJerkMagStdev|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+69|GrpdAvgFreqBodyAccStdevX|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure  for the 3-axial raw signal X.|Calculation: Grouped Average
+70|GrpdAvgFreqBodyAccStdevY|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure  for the 3-axial raw signal Y.|Calculation: Grouped Average
+71|GrpdAvgFreqBodyAccStdevZ|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure  for the 3-axial raw signal Z.|Calculation: Grouped Average
+72|GrpdAvgFreqBodyAccJerkStdevX|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal X.|Calculation: Grouped Average
+73|GrpdAvgFreqBodyAccJerkStdevY|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Y.|Calculation: Grouped Average
+74|GrpdAvgFreqBodyAccJerkStdevZ|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Z.|Calculation: Grouped Average
+75|GrpdAvgFreqBodyGyroStdevX|Frequency domain signal for the Standard Deviation value of the Body's Gyroscope measure  for the 3-axial raw signal X.|Calculation: Grouped Average
+76|GrpdAvgFreqBodyGyroStdevY|Frequency domain signal for the Standard Deviation value of the Body's Gyroscope measure  for the 3-axial raw signal Y.|Calculation: Grouped Average
+77|GrpdAvgFreqBodyGyroStdevZ|Frequency domain signal for the Standard Deviation value of the Body's Gyroscope measure  for the 3-axial raw signal Z.|Calculation: Grouped Average
+78|GrpdAvgFreqBodyAccMagStdev|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+79|GrpdAvgFreqBodyAccJerkMagStdev|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+80|GrpdAvgFreqBodyGyroMagStdev|Frequency domain signal for the Standard Deviation value of the Body's Gyroscope measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average
+81|GrpdAvgFreqBodyGyroJerkMagStdev|Frequency domain signal for the Standard Deviation value of the Body's Gyroscope measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.|Calculation: Grouped Average

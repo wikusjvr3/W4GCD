@@ -73,6 +73,7 @@ if(!file.exists("rawdata/ProjectFiles.zip")){
 # Step 2: Load Test & Train Datasets into R
 # ******************************************************************
 
+install.packages("data.table")
 library(data.table)
 Test_subjectDF <- read.table("rawdata/UCI HAR Dataset/test/subject_test.txt")
 Test_XDF <- read.table("rawdata/UCI HAR Dataset/test/X_test.txt")
@@ -264,6 +265,7 @@ rm(list=ls(all=TRUE))
 # ***************************************************************************
 #  Step 1a: Import combined RawData file and new Features file
 # ***************************************************************************
+
 library(data.table)
 RawDF <- fread("rawdata/combined_rawdata.txt")
 Features <- fread("rawdata/combined_features.txt")
@@ -344,11 +346,11 @@ MeanStdDF <- subset(RawDF,select= MScolNums)
 #  Step 2b: Export Extracted data frame to file
 # ****************************************************************************
 
-library(data.table)
-fwrite(MeanStdDF,"rawdata/Extracted_Data.txt")
-MeanStdDF <- fread("rawdata/Extracted_Data.txt")
 
-head(test,2)
+fwrite(MeanStdDF,"rawdata/Extracted_Data.txt")
+
+
+
 # ****************************************************************************
 #  Check Step 2b: Export of Extracted Data file successful
 # ****************************************************************************
@@ -376,6 +378,21 @@ head(test,2)
 source("CreateCodeBook.R")
 CodeBook(new,"rawdata/ExtractedcbImport.txt")
 
+# ****************************************************************************
+#  Check Step 3: Export of Extracted Data variables file successful for import
+#                   to cookbook.md
+# ****************************************************************************
+
+
+# > list.files(path = "rawdata/", pattern = NULL, all.files = FALSE,
+# +                 full.names = FALSE, recursive = FALSE,
+# +                 ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
+# [1] "cbImport.txt"          "combined_features.txt" "combined_rawdata.txt"
+# [4] "Extracted_Data.txt"    "ExtractedcbImport.txt" "ProjectFiles.zip"
+# [7] "UCI HAR Dataset"
+
+
+
 # ***************************************************************************
 #  Step 4: Clear Global environment
 # ***************************************************************************
@@ -387,5 +404,383 @@ rm(list=ls(all=TRUE))
 # ---------------------------------------------------------------------------
 # ---------------------------------------------------------------------------
 #                           End of Requirement 2
+# ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+
+
+
+
+
+# ---------------------------------------------------------------------------
+# *************************---------ooo---------*****************************
+#
+#                           Start of Requirement 3
+#        Uses descriptive activity names to name the activities in the data set
+#
+#
+# *************************---------ooo---------*****************************
+# ---------------------------------------------------------------------------
+
+
+# ***************************************************************************
+#  Step 1: Import extracted raw data & Activities Features files
+# ***************************************************************************
+
+library(data.table)
+MeanStdDF <- fread("rawdata/Extracted_Data.txt")
+Activities <- fread("rawdata/UCI HAR Dataset/activity_labels.txt")
+
+
+# ***************************************************************************
+#  Check Step 1: Show data frames import successfully
+# ***************************************************************************
+
+# > dim(MeanStdDF)
+# [1] 10299    81
+
+# > dim(Activities)
+# [1] 6 2
+
+# ***************************************************************************
+#  Step 1: Import extracted raw data & Activities Features files
+# ***************************************************************************
+
+MeanStdDF$Actvty_fctrs <- factor(MeanStdDF$Activity_code)
+levels(MeanStdDF$Actvty_fctrs) = Activities$V2
+
+# Re-order data frame so that Activity factors variable is in position 3
+ReorderDF <- MeanStdDF[,c(1:2,82,3:81)]
+
+
+# ***************************************************************************
+#  Check Step 2: Show that levels of activity codes updated correctly
+# ***************************************************************************
+
+# > dim(ReorderDF)
+# [1] 10299    82
+
+# > print(Activities)
+# V1                 V2
+# 1:  1            WALKING
+# 2:  2   WALKING_UPSTAIRS
+# 3:  3 WALKING_DOWNSTAIRS
+# 4:  4            SITTING
+# 5:  5           STANDING
+# 6:  6             LAYING
+
+# > str(ReorderDF$Actvty_fctrs)
+# Factor w/ 6 levels "WALKING","WALKING_UPSTAIRS",..: 5 5 5 5 5 5 5 5 5 5 ...
+
+# > head(subset(ReorderDF$Actvty_fctrs,ReorderDF$Activity_code==1),1)
+# [1] WALKING
+# Levels: WALKING WALKING_UPSTAIRS WALKING_DOWNSTAIRS SITTING STANDING LAYING
+
+# # > head(subset(ReorderDF$Actvty_fctrs,ReorderDF$Activity_code==2),1)
+# [1] WALKING_UPSTAIRS
+# Levels: WALKING WALKING_UPSTAIRS WALKING_DOWNSTAIRS SITTING STANDING LAYING
+
+# # > head(subset(ReorderDF$Actvty_fctrs,ReorderDF$Activity_code==3),1)
+# [1] WALKING_DOWNSTAIRS
+# Levels: WALKING WALKING_UPSTAIRS WALKING_DOWNSTAIRS SITTING STANDING LAYING
+
+# > head(subset(ReorderDF$Actvty_fctrs,ReorderDF$Activity_code==4),1)
+# [1] SITTING
+# Levels: WALKING WALKING_UPSTAIRS WALKING_DOWNSTAIRS SITTING STANDING LAYING
+
+# > head(subset(ReorderDF$Actvty_fctrs,ReorderDF$Activity_code==5),1)
+# [1] STANDING
+# Levels: WALKING WALKING_UPSTAIRS WALKING_DOWNSTAIRS SITTING STANDING LAYING
+
+# > head(subset(ReorderDF$Actvty_fctrs,ReorderDF$Activity_code==6),1)
+# [1] LAYING
+# Levels: WALKING WALKING_UPSTAIRS WALKING_DOWNSTAIRS SITTING STANDING LAYING
+
+# > str(ReorderDF)
+# Classes ‘data.table’ and 'data.frame':	10299 obs. of  82 variables:
+# $ Subject_ID        : int  2 2 2 2 2 2 2 2 2 2 ...
+# $ Activity_code     : int  5 5 5 5 5 5 5 5 5 5 ...
+# $ Actvty_fctrs      : Factor w/ 6 levels "WALKING","WALKING_UPSTAIRS"...
+#  variables 4-81 not shown...
+
+
+# ***************************************************************************
+#  Step 3: Export Activity updated raw data to file
+# ***************************************************************************
+
+
+fwrite(ReorderDF, "rawdata/ActivityUpdatedRawData.txt")
+
+
+
+
+# ***************************************************************************
+#  Check Step 3:  Updated raw data with Activity exported to file
+# ***************************************************************************
+
+# > fwrite(MeanStdDF, "rawdata/ActivityUpdatedRawData.txt")
+# > list.files(path = "rawdata/", pattern = NULL, all.files = FALSE,
+# +                 full.names = FALSE, recursive = FALSE,
+# +                 ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
+#
+# [1] "ActivityUpdatedRawData.txt" "cbImport.txt"        "combined_features.txt"
+# [4] "combined_rawdata.txt"       "Extracted_Data.txt"  "ExtractedcbImport.txt"
+# [7] "ProjectFiles.zip"           "UCI HAR Dataset"
+
+# ****************************************************************************
+#  Step 4: Export variables of Updated Activity Data to file;
+#            ready for cookbook.md list object
+# ****************************************************************************
+
+
+y <- data.frame(V1 = names(ReorderDF))
+x <- data.frame(V2 = seq.int(ncol(ReorderDF)))
+new <- cbind(x,y)
+
+source("CreateCodeBook.R")
+CodeBook(new,"rawdata/UpdatedActvcbImport.txt")
+
+# ****************************************************************************
+#  Check Step 4: Export of Activity Updated Data variables file successful for
+#                  import to cookbook.md
+# ****************************************************************************
+
+
+# > list.files(path = "rawdata/", pattern = NULL, all.files = FALSE,
+# +                 full.names = FALSE, recursive = FALSE,
+# +                 ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
+# [1] "ActivityUpdatedRawData.txt" "cbImport.txt"        "combined_features.txt"
+# [4] "combined_rawdata.txt"       "Extracted_Data.txt"  "ExtractedcbImport.txt"
+# [7] "ProjectFiles.zip"           "UCI HAR Dataset"     "UpdatedActvcbImport.txt"
+
+
+
+# ****************************************************************************
+#  Step 5: Clear Global Environment
+# ****************************************************************************
+
+rm(list=ls(all=TRUE))
+
+
+# ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+#                           End of Requirement 3
+# ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+
+
+
+
+# ---------------------------------------------------------------------------
+# *************************---------ooo---------*****************************
+#
+#                           Start of Requirement 4
+#       Appropriately labels the data set with descriptive variable names.
+#
+#   Rules:  > Clean invalid charachters like " ( ) - , "
+#           > Remove duplicates words in variables
+#           > Make sure there are no duplicate variables
+#
+# *************************---------ooo---------*****************************
+# ---------------------------------------------------------------------------
+
+# ****************************************************************************
+#  Step 1: Load Activity Raw Data file into R & output column names to variable
+# ****************************************************************************
+
+
+library(data.table)
+dirty <- fread("rawdata/ActivityUpdatedRawData.txt")
+rawdataVars <- names(dirty)
+
+# ****************************************************************************
+#  Check Step 1: Show data frame imported and new column names variable created.
+# ****************************************************************************
+
+# > dim(dirty)
+# [1] 10299    82
+
+# str(rawdataVars)
+# chr [1:82] "Subject_ID" "Activity_code" "Actvty_fctrs" "tBodyAcc-mean()-X" ...
+
+
+# ****************************************************************************
+#  Step 2: Cleanup column names & replace raw data frame variables with new
+#          list.
+# ****************************************************************************
+
+# source r script for RenderName funcion.
+# See Rename.R in project folder or Coodbook.md
+
+source("Rename.R")
+cleanedVars <- unlist(lapply(rawdataVars,RenderName))
+names(dirty) <- cleanedVars
+
+# ****************************************************************************
+#  Check Step 2: Confirm no Duplicated variable names
+# ****************************************************************************
+
+# > sum(duplicated(s))
+# [1] 0
+
+# > match(s,rawdataVars)
+# [1]  1  2  3 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+# [28] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+# [55] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+# [82] NA
+
+# ****************************************************************************
+#  Step 3: Export Tidy data. Export variables and Descriptions to file for
+#           import to cookbook.md list object
+# ****************************************************************************
+
+# source r script for AddDescn funcion.
+# See addDescription.R in project folder or Coodbook.md
+
+source('addDescription.R')
+temp <- unlist(lapply(cleanedVars,AddDescn))
+
+x <- data.frame(V2 = seq.int(ncol(dirty)))
+y <- data.frame(V1 = names(dirty))
+z <- data.frame(V3 = temp)
+new <- cbind(x,y,z)
+
+source("CreateCodeBook.R")
+CodeBook(new,"data/TidycbImport.txt")
+
+
+fwrite(dirty, "data/TidyData.txt")
+
+# ****************************************************************************
+#  Check Step 3: Show Export of Tidy Data variables file successful for
+#                  import to cookbook.md
+# ****************************************************************************
+
+
+# > list.files(path = "data/", pattern = NULL, all.files = FALSE,
+# +                 full.names = FALSE, recursive = FALSE,
+# +                 ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
+# [1] "TidycbImport.txt" "TidyData.txt"
+
+
+# ****************************************************************************
+#  Step 4: Clear Global Environment
+# ****************************************************************************
+
+rm(list=ls(all=TRUE))
+
+
+
+# ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+#                           End of Requirement 4
+# ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+
+
+
+# ---------------------------------------------------------------------------
+# *************************---------ooo---------*****************************
+#
+#                           Start of Requirement 5
+# From the data set in step 4, creates a second, independent tidy data set
+# with the average of each *variable* for each *activity* and each *subject*.
+#
+# *************************---------ooo---------*****************************
+# ---------------------------------------------------------------------------
+
+
+# ****************************************************************************
+#  Step 1: Load Tidy Data file into R
+# ****************************************************************************
+
+library(data.table)
+library(dplyr)
+TidyData <- fread("data/TidyData.txt")
+
+
+# ****************************************************************************
+#  Check Step 1: Show Tiday data frame imported successfully.
+# ****************************************************************************
+
+# > dim(TidyData)
+# [1] 10299    82
+#
+
+# ****************************************************************************
+#  Step 2: Select relevant columns and group by Activity and Subject.
+#          Obtain average of all variables on grouped data.
+# ****************************************************************************
+
+
+TDF <- tbl_df(TidyData)
+DT <- TDF %>%
+    select(Subject_ID,-Activity_code,Actvty_fctrs:FreqBodyGyroJerkMagStdev) %>%
+    group_by(Actvty_fctrs, Subject_ID) %>%
+        summarise_all(funs(mean))
+
+# ****************************************************************************
+#  Check Step 2: Show grouping and mean was applied to all columns.
+# ****************************************************************************
+
+# > dim(DT)
+# [1] 180  81
+
+
+# ****************************************************************************
+#  Step 3: Export Summarised  Tidy data. Export variables and Descriptions to
+#   file for import to cookbook.md list object
+# ****************************************************************************
+
+#  Add Grouped Average description to current column names
+
+cols <- names(DT)
+cols <- paste0("GrpdAvg",cols)
+cols <- sub("GrpdAvgActvty_fctrs","Actvty_fctrs",x = cols)
+cols <- sub("GrpdAvgSubject_ID","Subject_ID",x = cols)
+names(DT) <- cols
+
+# source r script for AddDescn funcion.
+# See addDescription.R in project folder or Coodbook.md
+
+source('addDescription.R')
+temp <- unlist(lapply(cols,AddDescn))
+
+x <- data.frame(V2 = seq.int(ncol(DT)))
+y <- data.frame(V1 = names(DT))
+z <- data.frame(V3 = temp)
+a <- data.frame(V4 = c("Group_by 1","Group_by 2",
+                       rep("Calculation: Grouped Average",ncol(DT)-2)))
+new <- cbind(x,y,z,a)
+
+source("CreateCodeBook.R")
+CodeBook(new,"data/GroupedAvgcbImport.txt")
+
+
+fwrite(DT,"data/GroupedAvgData.txt")
+
+# ****************************************************************************
+#  Check Step 3: Show Export of Grouped Average Tidy Data file successful.
+#               Show updated columns and description file ready for cookbook.md
+# ****************************************************************************
+
+
+# >  list.files(path = "data/", pattern = NULL, all.files = FALSE,
+# +                  full.names = FALSE, recursive = FALSE,
+# +                  ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
+
+# [1] "GroupedAvgcbImport.txt" "GroupedAvgData.txt"     "TidycbImport.txt"
+# [4] "TidyData.txt"
+
+
+# ****************************************************************************
+#  Step 4: Clear Global Environment
+# ****************************************************************************
+
+rm(list=ls(all=TRUE))
+
+
+# ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+#                           End of Requirement 5
 # ---------------------------------------------------------------------------
 # ---------------------------------------------------------------------------

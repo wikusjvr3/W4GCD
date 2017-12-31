@@ -1,0 +1,84 @@
+Column|FieldName|Description
+--|--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1|Subject_ID|The Unique ID number given to volunteer.
+2|Activity_code|Each activity type was given a number. See Actvty_fctrs
+3|Actvty_fctrs|1:Walking 2:Walking_Upstairs 3:Walking_Downstairs 4:Sitting 5:Standing 6:Laying
+4|TimeBodyAccMeanX|Time domain signal for the Mean value of the Body's acceleration measure  for the 3-axial raw signal X.
+5|TimeBodyAccMeanY|Time domain signal for the Mean value of the Body's acceleration measure  for the 3-axial raw signal Y.
+6|TimeBodyAccMeanZ|Time domain signal for the Mean value of the Body's acceleration measure  for the 3-axial raw signal Z.
+7|TimeGravityAccMeanX|Time domain signal for the Mean value of the Gravity acceleration measure  for the 3-axial raw signal X.
+8|TimeGravityAccMeanY|Time domain signal for the Mean value of the Gravity acceleration measure  for the 3-axial raw signal Y.
+9|TimeGravityAccMeanZ|Time domain signal for the Mean value of the Gravity acceleration measure  for the 3-axial raw signal Z.
+10|TimeBodyAccJerkMeanX|Time domain signal for the Mean value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal X.
+11|TimeBodyAccJerkMeanY|Time domain signal for the Mean value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Y.
+12|TimeBodyAccJerkMeanZ|Time domain signal for the Mean value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Z.
+13|TimeBodyGyroMeanX|Time domain signal for the Mean value of the Body's Gyroscope measure  for the 3-axial raw signal X.
+14|TimeBodyGyroMeanY|Time domain signal for the Mean value of the Body's Gyroscope measure  for the 3-axial raw signal Y.
+15|TimeBodyGyroMeanZ|Time domain signal for the Mean value of the Body's Gyroscope measure  for the 3-axial raw signal Z.
+16|TimeBodyGyroJerkMeanX|Time domain signal for the Mean value of the Body's Gyroscope measure for a Jerk movement  for the 3-axial raw signal X.
+17|TimeBodyGyroJerkMeanY|Time domain signal for the Mean value of the Body's Gyroscope measure for a Jerk movement  for the 3-axial raw signal Y.
+18|TimeBodyGyroJerkMeanZ|Time domain signal for the Mean value of the Body's Gyroscope measure for a Jerk movement  for the 3-axial raw signal Z.
+19|TimeBodyAccMagMean|Time domain signal for the Mean value of the Body's acceleration measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+20|TimeGravityAccMagMean|Time domain signal for the Mean value of the Gravity acceleration measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+21|TimeBodyAccJerkMagMean|Time domain signal for the Mean value of the Body's acceleration measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+22|TimeBodyGyroMagMean|Time domain signal for the Mean value of the Body's Gyroscope measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+23|TimeBodyGyroJerkMagMean|Time domain signal for the Mean value of the Body's Gyroscope measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+24|FreqBodyAccMeanX|Frequency domain signal for the Mean value of the Body's acceleration measure  for the 3-axial raw signal X.
+25|FreqBodyAccMeanY|Frequency domain signal for the Mean value of the Body's acceleration measure  for the 3-axial raw signal Y.
+26|FreqBodyAccMeanZ|Frequency domain signal for the Mean value of the Body's acceleration measure  for the 3-axial raw signal Z.
+27|FreqBodyAccFreqavgX|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure  for the 3-axial raw signal X.
+28|FreqBodyAccFreqavgY|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure  for the 3-axial raw signal Y.
+29|FreqBodyAccFreqavgZ|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure  for the 3-axial raw signal Z.
+30|FreqBodyAccJerkMeanX|Frequency domain signal for the Mean value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal X.
+31|FreqBodyAccJerkMeanY|Frequency domain signal for the Mean value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Y.
+32|FreqBodyAccJerkMeanZ|Frequency domain signal for the Mean value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Z.
+33|FreqBodyAccJerkFreqavgX|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal X.
+34|FreqBodyAccJerkFreqavgY|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Y.
+35|FreqBodyAccJerkFreqavgZ|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Z.
+36|FreqBodyGyroMeanX|Frequency domain signal for the Mean value of the Body's Gyroscope measure  for the 3-axial raw signal X.
+37|FreqBodyGyroMeanY|Frequency domain signal for the Mean value of the Body's Gyroscope measure  for the 3-axial raw signal Y.
+38|FreqBodyGyroMeanZ|Frequency domain signal for the Mean value of the Body's Gyroscope measure  for the 3-axial raw signal Z.
+39|FreqBodyGyroFreqavgX|Frequency domain signal for the Weighted average of the frequency components of the Body's Gyroscope measure  for the 3-axial raw signal X.
+40|FreqBodyGyroFreqavgY|Frequency domain signal for the Weighted average of the frequency components of the Body's Gyroscope measure  for the 3-axial raw signal Y.
+41|FreqBodyGyroFreqavgZ|Frequency domain signal for the Weighted average of the frequency components of the Body's Gyroscope measure  for the 3-axial raw signal Z.
+42|FreqBodyAccMagMean|Frequency domain signal for the Mean value of the Body's acceleration measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+43|FreqBodyAccMagFreqavg|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+44|FreqBodyAccJerkMagMean|Frequency domain signal for the Mean value of the Body's acceleration measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+45|FreqBodyAccJerkMagFreqavg|Frequency domain signal for the Weighted average of the frequency components of the Body's acceleration measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+46|FreqBodyGyroMagMean|Frequency domain signal for the Mean value of the Body's Gyroscope measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+47|FreqBodyGyroMagFreqavg|Frequency domain signal for the Weighted average of the frequency components of the Body's Gyroscope measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+48|FreqBodyGyroJerkMagMean|Frequency domain signal for the Mean value of the Body's Gyroscope measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+49|FreqBodyGyroJerkMagFreqavg|Frequency domain signal for the Weighted average of the frequency components of the Body's Gyroscope measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+50|TimeBodyAccStdevX|Time domain signal for the Standard Deviation value of the Body's acceleration measure  for the 3-axial raw signal X.
+51|TimeBodyAccStdevY|Time domain signal for the Standard Deviation value of the Body's acceleration measure  for the 3-axial raw signal Y.
+52|TimeBodyAccStdevZ|Time domain signal for the Standard Deviation value of the Body's acceleration measure  for the 3-axial raw signal Z.
+53|TimeGravityAccStdevX|Time domain signal for the Standard Deviation value of the Gravity acceleration measure  for the 3-axial raw signal X.
+54|TimeGravityAccStdevY|Time domain signal for the Standard Deviation value of the Gravity acceleration measure  for the 3-axial raw signal Y.
+55|TimeGravityAccStdevZ|Time domain signal for the Standard Deviation value of the Gravity acceleration measure  for the 3-axial raw signal Z.
+56|TimeBodyAccJerkStdevX|Time domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal X.
+57|TimeBodyAccJerkStdevY|Time domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Y.
+58|TimeBodyAccJerkStdevZ|Time domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Z.
+59|TimeBodyGyroStdevX|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure  for the 3-axial raw signal X.
+60|TimeBodyGyroStdevY|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure  for the 3-axial raw signal Y.
+61|TimeBodyGyroStdevZ|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure  for the 3-axial raw signal Z.
+62|TimeBodyGyroJerkStdevX|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure for a Jerk movement  for the 3-axial raw signal X.
+63|TimeBodyGyroJerkStdevY|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure for a Jerk movement  for the 3-axial raw signal Y.
+64|TimeBodyGyroJerkStdevZ|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure for a Jerk movement  for the 3-axial raw signal Z.
+65|TimeBodyAccMagStdev|Time domain signal for the Standard Deviation value of the Body's acceleration measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+66|TimeGravityAccMagStdev|Time domain signal for the Standard Deviation value of the Gravity acceleration measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+67|TimeBodyAccJerkMagStdev|Time domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+68|TimeBodyGyroMagStdev|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+69|TimeBodyGyroJerkMagStdev|Time domain signal for the Standard Deviation value of the Body's Gyroscope measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+70|FreqBodyAccStdevX|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure  for the 3-axial raw signal X.
+71|FreqBodyAccStdevY|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure  for the 3-axial raw signal Y.
+72|FreqBodyAccStdevZ|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure  for the 3-axial raw signal Z.
+73|FreqBodyAccJerkStdevX|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal X.
+74|FreqBodyAccJerkStdevY|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Y.
+75|FreqBodyAccJerkStdevZ|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement  for the 3-axial raw signal Z.
+76|FreqBodyGyroStdevX|Frequency domain signal for the Standard Deviation value of the Body's Gyroscope measure  for the 3-axial raw signal X.
+77|FreqBodyGyroStdevY|Frequency domain signal for the Standard Deviation value of the Body's Gyroscope measure  for the 3-axial raw signal Y.
+78|FreqBodyGyroStdevZ|Frequency domain signal for the Standard Deviation value of the Body's Gyroscope measure  for the 3-axial raw signal Z.
+79|FreqBodyAccMagStdev|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+80|FreqBodyAccJerkMagStdev|Frequency domain signal for the Standard Deviation value of the Body's acceleration measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+81|FreqBodyGyroMagStdev|Frequency domain signal for the Standard Deviation value of the Body's Gyroscope measure on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
+82|FreqBodyGyroJerkMagStdev|Frequency domain signal for the Standard Deviation value of the Body's Gyroscope measure for a Jerk movement on a magnitude measure of the three-dimensional signals calculated using the Euclidean norm.
