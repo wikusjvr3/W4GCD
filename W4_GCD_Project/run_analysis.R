@@ -758,6 +758,7 @@ CodeBook(new,"data/GroupedAvgcbImport.txt")
 
 fwrite(DT,"data/GroupedAvgData.txt")
 
+# write.table(DT,"data/GroupedAvgDataCourseraUpload.txt", row.names = FALSE)
 # ****************************************************************************
 #  Check Step 3: Show Export of Grouped Average Tidy Data file successful.
 #               Show updated columns and description file ready for cookbook.md
