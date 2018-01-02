@@ -157,8 +157,23 @@ $(document).ready(function () {
 <p>Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the ‘f’ to indicate frequency domain signals).</p>
 <p>These signals were used to estimate variables of the feature vector for each pattern:<br />
 ‘-XYZ’ is used to denote 3-axial signals in the X, Y and Z directions.&quot; <a href="http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones">Human Activity Recognition Using Smartphones Data Set</a></p>
-<div id="updated-codebook-for-combined-raw-data" class="section level2">
-<h2>Updated Codebook for Combined Raw Data</h2>
+<div id="table-of-contents" class="section level2">
+<h2>Table of Contents:</h2>
+<ol style="list-style-type: decimal">
+<li>Requirement 1: Updated Codebook for Combined Raw Data</li>
+<li>Requirement 2: New Codebook for Extracted Raw Data</li>
+<li>Requirement 3: Updated variables list with Descriptive Activity Codes:</li>
+<li><ol style="list-style-type: lower-alpha">
+<li>Requirement 4: Tidy Data Functions</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: lower-alpha">
+<li>Requirement 4: Tidy Data Cookbook</li>
+</ol></li>
+<li>Requirement 5: Grouped Average Data Cookbook from Tidy Dataset.</li>
+</ol>
+</div>
+<div id="requirement-1-updated-codebook-for-combined-raw-data" class="section level2">
+<h2>Requirement 1: Updated Codebook for Combined Raw Data</h2>
 <table>
 <thead>
 <tr class="header">
@@ -2421,8 +2436,9 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<div id="new-codebook-for-extracted-raw-data" class="section level3">
-<h3>New Codebook for Extracted Raw Data</h3>
+</div>
+<div id="requirement-2-new-codebook-for-extracted-raw-data" class="section level2">
+<h2>Requirement 2: New Codebook for Extracted Raw Data</h2>
 <table>
 <thead>
 <tr class="header">
@@ -2758,10 +2774,8 @@ $(document).ready(function () {
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div id="requirement-3---updated-variables-list-with-descriptive-activity-codes" class="section level1">
-<h1>Requirement 3 - Updated variables list with Descriptive Activity Codes:</h1>
+<div id="requirement-3--updated-variables-list-with-descriptive-activity-codes" class="section level2">
+<h2>Requirement 3:- Updated variables list with Descriptive Activity Codes:</h2>
 <table>
 <thead>
 <tr class="header">
@@ -3100,8 +3114,9 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<div id="requirement-4-tidy-data" class="section level3">
-<h3>Requirement 4: Tidy Data</h3>
+</div>
+<div id="requirement-4-tidy-data" class="section level2">
+<h2>Requirement 4: Tidy Data</h2>
 <div id="code-used-for-functions" class="section level4">
 <h4>Code used for functions:</h4>
 <p>‘’’ R Script: Rename.R</p>
@@ -3219,8 +3234,9 @@ return(z)</code></pre>
 <p>}</p>
 <p>‘’’</p>
 </div>
-<div id="tidy-data-cookbook" class="section level4">
-<h4>Tidy Data CookBook</h4>
+</div>
+<div id="requirement-4-tidy-data-cookbook" class="section level2">
+<h2>Requirement 4: Tidy Data CookBook</h2>
 <p>Under the scope of this project, it was assumed that a tidy data set has descriptive action labels, cleaned sensible descriptive column names, and have the required extracted data i.e all columns where the column containts either “mean()” or “std()”. The codebook below was updated to provide a better meaning of what each variable name represent.</p>
 <table>
 <colgroup>
@@ -3648,13 +3664,13 @@ return(z)</code></pre>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
 <div id="cookbook-for-requirement-5" class="section level3">
 <h3>CookBook for Requirement 5:</h3>
 <p>The codebook below was updated with new column names which includes the grouped and average indicator. The variable descriptions remained the same, however a “Type” column was added to show which variables was a result of the summarise calculations.</p>
-<div id="grouped-average-data-from-tidy-dataset." class="section level4">
-<h4>Grouped Average Data from Tidy Dataset.</h4>
+</div>
+</div>
+<div id="requirement-5-grouped-average-data-from-tidy-dataset." class="section level2">
+<h2>Requirement 5: Grouped Average Data from Tidy Dataset.</h2>
 <table style="width:100%;">
 <colgroup>
 <col width="1%"></col>
@@ -4159,7 +4175,6 @@ return(z)</code></pre>
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 

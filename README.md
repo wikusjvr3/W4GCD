@@ -69,3 +69,50 @@ You should create one R script called run_analysis.R that does the following:
 
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each *variable* for each *activity* and each *subject*.   
     
+## How Requirements Were Met:
+
+**Requirement 1**
+
+1. Download Zip File to Raw Data Folder and Extract contents
+2. Load Test & Train Datasets into R
+3. Bind X,Y,Subject data frames into one data frame
+4. Write combined dataframe to rawdata folder as text file
+5. Create New Features file for combined Raw Data
+6. Export combined Features to file
+7. Export combined Features to file ready for cookbook.md list object
+8. Clear Global environment
+
+**Requirement 2**
+
+1. Import combined RawData file and new Features file
+2. Assign new Features to Combined RawData variables
+3. Find variables with words 'mean' and 'std', and
+   filter data frame and include "Subject_ID" and "Activity_code"
+4. Export Extracted data frame to file
+5. Export variables of Extracted Data to file; ready for cookbook.md list object
+6. Clear Global environment
+
+**Requirement 3**
+
+1. Import extracted raw data & Activities Features files
+2. Update levels of activity codes 
+3. Export Activity updated raw data to file
+4. Export variables of Updated Activity Data to file; ready for cookbook.md 
+   list object
+5. Clear Global Environment
+
+**Requirement 4**
+
+1. Load Activity Raw Data file into R & output column names to variable
+2. Cleanup column names & replace raw data frame variables with new list.
+3. Export Tidy data. Export variables and Descriptions to file for import to cookbook.md list object
+4. Clear Global Environment
+
+**Requirement 5**
+
+1. Load Tidy Data file into R
+2. Select relevant columns and group by Activity and Subject. Obtain average 
+   of all variables on grouped data.
+3. Export Summarised  Tidy data. Export variables and Descriptions to file for
+   import to cookbook.md list object
+4. Clear Global Environment

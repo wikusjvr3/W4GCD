@@ -23,7 +23,18 @@ These signals were used to estimate variables of the feature vector for each pat
 '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions."
 [Human Activity Recognition Using Smartphones Data Set](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
 
-## Updated Codebook for Combined Raw Data
+
+## Table of Contents:
+
+1.  Requirement 1: Updated Codebook for Combined Raw Data
+2.  Requirement 2: New Codebook for Extracted Raw Data
+3.  Requirement 3: Updated variables list with Descriptive Activity Codes:
+4.  a. Requirement 4: Tidy Data Functions
+4.  b. Requirement 4: Tidy Data Cookbook
+5.  Requirement 5: Grouped Average Data Cookbook from Tidy Dataset.
+
+
+## Requirement 1: Updated Codebook for Combined Raw Data
 
 Column|FieldName
 ---|------------------------------------
@@ -591,7 +602,8 @@ Column|FieldName
 562|Activity_code
 563|Subject_ID
 
-### New Codebook for Extracted Raw Data 
+## Requirement 2: New Codebook for Extracted Raw Data 
+
 Column|FieldName
 --|-------------------------------
 1|Subject_ID
@@ -676,7 +688,7 @@ Column|FieldName
 80|fBodyBodyGyroMag-std()
 81|fBodyBodyGyroJerkMag-std()
 
-# Requirement 3 - Updated variables list with Descriptive Activity Codes:
+## Requirement 3:- Updated variables list with Descriptive Activity Codes:
 
 Column|FieldName
 --|-------------------------------
@@ -763,7 +775,7 @@ Column|FieldName
 81|fBodyBodyGyroMag-std()
 82|fBodyBodyGyroJerkMag-std()
 
-### Requirement 4: Tidy Data 
+## Requirement 4: Tidy Data 
 
 #### Code used for functions: 
 
@@ -891,7 +903,7 @@ AddDescn <- function(x){
 
 '''
 
-#### Tidy Data CookBook
+## Requirement 4: Tidy Data CookBook
 
 Under the scope of this project, it was assumed that a tidy data set has
 descriptive action labels, cleaned sensible descriptive column names, and have 
@@ -987,7 +999,9 @@ Column|FieldName|Description
 
 The codebook below was updated with new column names which includes the grouped and average indicator. The variable descriptions remained the same, however a "Type" column was added to show which variables was a result of the summarise calculations. 
 
-#### Grouped Average Data from Tidy Dataset.
+
+
+## Requirement 5: Grouped Average Data from Tidy Dataset.
 
 Column|FieldName|Description|Type
 --|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------

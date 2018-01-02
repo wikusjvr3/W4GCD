@@ -167,6 +167,51 @@ $(document).ready(function () {
 </div>
 </div>
 </div>
+<div id="how-requirements-were-met" class="section level2">
+<h2>How Requirements Were Met:</h2>
+<p><strong>Requirement 1</strong></p>
+<ol style="list-style-type: decimal">
+<li>Download Zip File to Raw Data Folder and Extract contents</li>
+<li>Load Test &amp; Train Datasets into R</li>
+<li>Bind X,Y,Subject data frames into one data frame</li>
+<li>Write combined dataframe to rawdata folder as text file</li>
+<li>Create New Features file for combined Raw Data</li>
+<li>Export combined Features to file</li>
+<li>Export combined Features to file ready for cookbook.md list object</li>
+<li>Clear Global environment</li>
+</ol>
+<p><strong>Requirement 2</strong></p>
+<ol style="list-style-type: decimal">
+<li>Import combined RawData file and new Features file</li>
+<li>Assign new Features to Combined RawData variables</li>
+<li>Find variables with words ‘mean’ and ‘std’, and filter data frame and include “Subject_ID” and “Activity_code”</li>
+<li>Export Extracted data frame to file</li>
+<li>Export variables of Extracted Data to file; ready for cookbook.md list object</li>
+<li>Clear Global environment</li>
+</ol>
+<p><strong>Requirement 3</strong></p>
+<ol style="list-style-type: decimal">
+<li>Import extracted raw data &amp; Activities Features files</li>
+<li>Update levels of activity codes</li>
+<li>Export Activity updated raw data to file</li>
+<li>Export variables of Updated Activity Data to file; ready for cookbook.md list object</li>
+<li>Clear Global Environment</li>
+</ol>
+<p><strong>Requirement 4</strong></p>
+<ol style="list-style-type: decimal">
+<li>Load Activity Raw Data file into R &amp; output column names to variable</li>
+<li>Cleanup column names &amp; replace raw data frame variables with new list.</li>
+<li>Export Tidy data. Export variables and Descriptions to file for import to cookbook.md list object</li>
+<li>Clear Global Environment</li>
+</ol>
+<p><strong>Requirement 5</strong></p>
+<ol style="list-style-type: decimal">
+<li>Load Tidy Data file into R</li>
+<li>Select relevant columns and group by Activity and Subject. Obtain average of all variables on grouped data.</li>
+<li>Export Summarised Tidy data. Export variables and Descriptions to file for import to cookbook.md list object</li>
+<li>Clear Global Environment</li>
+</ol>
+</div>
 </div>
 
 

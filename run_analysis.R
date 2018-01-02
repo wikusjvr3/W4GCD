@@ -288,7 +288,7 @@ names(RawDF) <- Features$V2
 rm(Features)
 
 # ***************************************************************************
-#  Step 1b: Check new variables assigned correctly
+#  Check Step 1b: Check new variables assigned correctly
 # ***************************************************************************
 
 # > head(names(RawDF),3)
@@ -442,7 +442,7 @@ Activities <- fread("rawdata/UCI HAR Dataset/activity_labels.txt")
 # [1] 6 2
 
 # ***************************************************************************
-#  Step 1: Import extracted raw data & Activities Features files
+#  Step 2: Update levels of activity codes
 # ***************************************************************************
 
 MeanStdDF$Actvty_fctrs <- factor(MeanStdDF$Activity_code)
@@ -758,7 +758,10 @@ CodeBook(new,"data/GroupedAvgcbImport.txt")
 
 fwrite(DT,"data/GroupedAvgData.txt")
 
-# write.table(DT,"data/GroupedAvgDataCourseraUpload.txt", row.names = FALSE)
+#  write.table used as per Coursera instructions
+write.table(DT,"data/GroupedAvgDataCourseraUpload.txt", row.names = FALSE)
+
+
 # ****************************************************************************
 #  Check Step 3: Show Export of Grouped Average Tidy Data file successful.
 #               Show updated columns and description file ready for cookbook.md
